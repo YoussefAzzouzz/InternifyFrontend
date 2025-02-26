@@ -1,0 +1,34 @@
+<h2 class="form-title">{{ isEditMode ? 'Update' : 'Add' }} Demand</h2>
+
+<form [formGroup]="demandForm" (ngSubmit)="onSubmit()" class="demand-form">
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input id="title" type="text" formControlName="title" required class="form-input">
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <textarea id="description" formControlName="description" required class="form-input"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="field">Field:</label>
+    <input id="field" type="text" formControlName="field" required class="form-input">
+  </div>
+
+  <div class="form-group">
+    <label for="date">Date:</label>
+    <input id="date" type="date" formControlName="date" required class="form-input">
+  </div>
+
+  <div class="form-group">
+    <label for="status">Status:</label>
+    <select id="status" formControlName="status" required class="form-input">
+      <option value="Pending">Pending</option>
+      <option value="Approved">Approved</option>
+      <option value="Rejected">Rejected</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn-submit">{{ isEditMode ? 'Update' : 'Add' }} Demand</button>
+</form>

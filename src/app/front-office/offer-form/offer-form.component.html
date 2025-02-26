@@ -1,0 +1,37 @@
+<h2 class="form-title">{{ isEditMode ? 'Update' : 'Add' }} Offer</h2>
+
+<form [formGroup]="offerForm" (ngSubmit)="onSubmit()" class="offer-form">
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input id="title" type="text" formControlName="title" required class="form-input">
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <textarea id="description" formControlName="description" required class="form-input"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="image">Image URL:</label>
+    <input id="image" type="text" formControlName="image" required class="form-input">
+  </div>
+
+  <div class="form-group">
+    <label for="datePub">Publication Date:</label>
+    <input id="datePub" type="date" formControlName="datePub" required class="form-input">
+  </div>
+
+  <div class="form-group">
+    <label for="dateExp">Expiration Date:</label>
+    <input id="dateExp" type="date" formControlName="dateExp" required class="form-input">
+  </div>
+
+  <div class="form-group">
+    <label for="category">Category:</label>
+    <input id="category" type="text" formControlName="category" required class="form-input">
+  </div>
+
+  <button type="submit" class="btn-submit">
+    {{ isEditMode ? 'Update' : 'Add' }} Offer
+  </button>
+</form>

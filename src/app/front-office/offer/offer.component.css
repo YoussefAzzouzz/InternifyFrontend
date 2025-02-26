@@ -1,0 +1,85 @@
+/* Conteneur de la barre de recherche */
+.search-container {
+  position: relative;
+  width: 50%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Icône de recherche */
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #6c757d;
+}
+
+/* Champ de recherche stylisé */
+.search-input {
+  width: 100%;
+  padding: 12px 40px;
+  border-radius: 25px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Cartes d'offres */
+.offer-card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.offer-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Boutons d'action */
+.btn {
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* Bouton "Add New Offer" */
+.btn-primary {
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  border-radius: 50px;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Icônes */
+i {
+  margin-right: 5px;
+}

@@ -1,0 +1,61 @@
+<div class="container mt-5">
+  <h2 class="text-center text-primary">Offer Details</h2>
+
+  <!-- Offer details display -->
+  <div *ngIf="offer" class="demand-item shadow-lg rounded-lg overflow-hidden mb-5 bg-white">
+    <div class="demand-info p-4">
+      <h3 class="demand-title text-dark">{{ offer.title }}</h3>
+      <p class="demand-description"><strong>Description:</strong> {{ offer.description }}</p>
+      <p class="demand-field"><strong>Category:</strong> {{ offer.category }}</p>
+      <p class="demand-date"><strong>Publication Date:</strong> {{ offer.datePub ? (offer.datePub | date: 'short') : 'N/A' }}</p>
+      <p class="demand-status"><strong>Expiration Date:</strong> {{ offer.dateExp ? (offer.dateExp | date: 'short') : 'N/A' }}</p>
+    </div>
+
+    <!-- Offer actions (Edit/Delete) -->
+    <div class="demand-actions d-flex justify-content-between align-items-center p-3 bg-light">
+      <button class="btn btn-lg btn-warning text-dark px-4" [routerLink]="['/front-office/edit-offer', offer.id]" >Edit</button>
+      <button class="btn btn-lg btn-danger px-4" (click)="deleteOffer(offer.id)">Delete</button>
+    </div>
+  </div>
+
+  <!-- Comments Section -->
+  <div *ngIf="comments.length > 0" class="comments-section">
+    <h3 class="text-secondary mb-3">Comments:</h3>
+    <ul class="list-unstyled">
+      <li *ngFor="let comment of comments" class="comment-item mb-4 p-4 bg-light rounded-lg shadow-sm">
+        <p class="mb-2">{{ comment.content }}</p>
+        <small class="text-muted">Created on: {{ comment.creationDate | date: 'short' }}</small>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Add Comment Section -->
+  <div class="add-comment-section mt-4">
+    <h3 class="text-secondary mb-3">Add a Comment:</h3>
+    <div class="d-flex">
+      <input type="text" [(ngModel)]="newComment" class="form-control form-control-sm"
+             placeholder="Write your comment..." />
+      <button class="btn btn-primary btn-sm ms-2" (click)="addComment(offer.id)">
+        <i class="fas fa-paper-plane"></i> Post
+      </button>
+    </div>
+  </div>
+
+  <!-- Applications Section -->
+  <div *ngIf="applications.length > 0" class="applications-section mt-4">
+    <h3 class="text-secondary mb-3">Applications:</h3>
+    <ul class="list-unstyled">
+      <li *ngFor="let application of applications" class="application-item mb-4 p-4 bg-light rounded-lg shadow-sm">
+        <p><strong>Status:</strong> {{ application.status }}</p>
+        <p><strong>CV:</strong> <a [href]="application.cv" target="_blank" class="btn btn-outline-primary">View CV</a></p>
+        <p><strong>Motivation Letter:</strong> <a [href]="application.motivationLetter" target="_blank" class="btn btn-outline-success">View Motivation Letter</a></p>
+        <small class="text-muted">Posted on: {{ application.postDate | date: 'short' }}</small>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Back to Offer List Button -->
+  <div class="text-center mt-4">
+    <button class="btn btn-lg btn-outline-secondary px-5 py-3" [routerLink]="['/front-office/internships-offers']">Back to Offer List</button>
+  </div>
+</div>

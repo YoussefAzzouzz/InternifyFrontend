@@ -1,0 +1,175 @@
+/* Global Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Title */
+h2 {
+  font-size: 40px;
+  color: #1a1a1a;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Offer Details Section */
+.demand-item {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.demand-info {
+  font-size: 16px;
+}
+
+.demand-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #003366;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.demand-description,
+.demand-field,
+.demand-date,
+.demand-status {
+  color: #555;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.demand-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #f4f4f4;
+  border-top: 1px solid #ddd;
+}
+
+.demand-actions .btn {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px 25px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.demand-actions .btn:hover {
+  transform: scale(1.05);
+}
+
+.btn-warning {
+  background-color: #f0ad4e;
+  color: white;
+}
+
+.btn-warning:hover {
+  background-color: #ec971f;
+}
+
+.btn-danger {
+  background-color: #d9534f;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c9302c;
+}
+
+/* Comments and Applications Section */
+.comments-section h3,
+.applications-section h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.comment-item,
+.application-item {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.comment-item:hover,
+.application-item:hover {
+  transform: translateY(-5px);
+}
+
+.comment-item p,
+.application-item p {
+  font-size: 16px;
+}
+
+.comment-item small,
+.application-item small {
+  font-size: 14px;
+  color: #888;
+}
+
+.application-item a {
+  font-size: 16px;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.application-item a:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Application CV and Motivation Letter Links */
+.application-item .btn-outline-primary,
+.application-item .btn-outline-success {
+  padding: 8px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.application-item .btn-outline-primary {
+  color: #007bff;
+  border: 1px solid #007bff;
+}
+
+.application-item .btn-outline-primary:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.application-item .btn-outline-success {
+  color: #28a745;
+  border: 1px solid #28a745;
+}
+
+.application-item .btn-outline-success:hover {
+  background-color: #28a745;
+  color: white;
+}
+
+/* Back Button */
+.btn-outline-secondary {
+  font-size: 18px;
+  padding: 15px 30px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  color: #666;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #f0f0f0;
+  color: #333;
+  transform: translateY(-2px);
+}
