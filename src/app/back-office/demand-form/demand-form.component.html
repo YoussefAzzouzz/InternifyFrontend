@@ -1,0 +1,80 @@
+<h2 class="form-title">{{ isEditMode ? 'Update' : 'Add' }} Demand</h2>
+
+<form [formGroup]="demandForm" (ngSubmit)="onSubmit()" class="demand-form">
+  <!-- Title Field -->
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input
+      id="title"
+      type="text"
+      formControlName="title"
+      required
+      class="form-input"
+      [class.invalid]="demandForm.controls['title'].invalid && demandForm.controls['title'].touched"
+    />
+    <!-- Error message for Title -->
+    <div *ngIf="demandForm.controls['title'].invalid && demandForm.controls['title'].touched" class="error-message">
+      Title is required.
+    </div>
+  </div>
+
+  <!-- Description Field -->
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <textarea
+      id="description"
+      formControlName="description"
+      required
+      class="form-input"
+      [class.invalid]="demandForm.controls['description'].invalid && demandForm.controls['description'].touched"
+    ></textarea>
+    <!-- Error message for Description -->
+    <div *ngIf="demandForm.controls['description'].invalid && demandForm.controls['description'].touched" class="error-message">
+      Description is required.
+    </div>
+  </div>
+
+  <!-- Field Dropdown -->
+  <div class="form-group">
+    <label for="field">Field:</label>
+    <select
+      id="field"
+      formControlName="field"
+      required
+      class="form-input"
+      [class.invalid]="demandForm.controls['field'].invalid && demandForm.controls['field'].touched"
+    >
+      <option value="IT">IT</option>
+      <option value="Marketing">Marketing</option>
+      <option value="HR">HR</option>
+      <option value="Finance">Finance</option>
+    </select>
+    <!-- Error message for Field -->
+    <div *ngIf="demandForm.controls['field'].invalid && demandForm.controls['field'].touched" class="error-message">
+      Field is required.
+    </div>
+  </div>
+
+  <!-- Status Dropdown -->
+  <div class="form-group">
+    <label for="status">Status:</label>
+    <select
+      id="status"
+      formControlName="status"
+      required
+      class="form-input"
+      [class.invalid]="demandForm.controls['status'].invalid && demandForm.controls['status'].touched"
+    >
+      <option value="Pending">Pending</option>
+      <option value="Approved">Approved</option>
+      <option value="Rejected">Rejected</option>
+    </select>
+    <!-- Error message for Status -->
+    <div *ngIf="demandForm.controls['status'].invalid && demandForm.controls['status'].touched" class="error-message">
+      Status is required.
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" class="btn-submit" [disabled]="demandForm.invalid">{{ isEditMode ? 'Update' : 'Add' }} Demand</button>
+</form>

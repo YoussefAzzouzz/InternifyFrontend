@@ -1,0 +1,25 @@
+<form [formGroup]="responseForm" (ngSubmit)="submitResponse()" class="response-form" style="padding-top: 100px">
+  <!-- Comment Field -->
+  <div class="form-group">
+    <label for="comment" class="form-label">Comment</label>
+    <textarea id="comment" formControlName="comment" rows="4" class="form-control" placeholder="Enter your comment..."></textarea>
+    <div *ngIf="responseForm.controls['comment'].invalid && responseForm.controls['comment'].touched" class="error-message">
+      Comment is required.
+    </div>
+  </div>
+
+  <!-- Status Field -->
+  <div class="form-group">
+    <label for="status" class="form-label">Status</label>
+    <select id="status" formControlName="status" class="form-control">
+      <option value="Pending">Pending</option>
+      <option value="Approved">Approved</option>
+      <option value="Rejected">Rejected</option>
+    </select>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="form-group">
+    <button type="submit" [disabled]="responseForm.invalid" class="btn btn-submit">Submit Response</button>
+  </div>
+</form>
