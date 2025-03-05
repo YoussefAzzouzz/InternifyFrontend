@@ -44,6 +44,15 @@ export class MessageComponent implements OnInit {
     this.loadMessages();
 
     this.webSocketService.getMessageUpdates().subscribe((message: any) => {
+      if (message.action === 'pinned' || message.action === 'unpinned') {
+        const updatedMessage = message.message; // Get the updated message
+        const index = this.messages.findIndex(m => m.id === updatedMessage.id);
+        if (index !== -1) {
+          this.messages[index].isPinned = updatedMessage.isPinned; // Update the pinned status
+        } else {
+          this.messages.push(updatedMessage); // Add the message if it doesn't exist
+        }
+      }
       // Vérifier si le message a un ID, ce qui signifie qu'il s'agit d'un message ajouté
       if (message.id) {
         // Vérifier si le message appartient à la conversation actuelle
@@ -123,7 +132,6 @@ export class MessageComponent implements OnInit {
       id: 0,
       content: this.newMessageContent,
       messageType: 'TEXT',
-      timestamp: new Date(),
       sender: this.connectedUser,
       receiver: this.conversation.users[0].id == this.userId ? this.conversation.users[1] : this.conversation.users[0],
       status: 'SENT',
@@ -311,5 +319,26 @@ export class MessageComponent implements OnInit {
     } else {
       this.startRecording();
     }
+  }
+
+  pinMessage(message: Message) {
+    this.messageService.pinMessage(message.id).subscribe({
+      next: () => {
+        message.isPinned = !message.isPinned;
+
+        // Emit the updated message through the public method
+        this.webSocketService.emitMessageUpdate({
+          action: message.isPinned ? 'pinned' : 'unpinned',
+          message: message
+        });
+      },
+      error: (err) => {
+        console.error('Error pinning message:', err);
+      }
+    });
+  }
+
+  get hasPinnedMessages(): boolean {
+    return this.messages.some(message => message.isPinned);
   }
 }

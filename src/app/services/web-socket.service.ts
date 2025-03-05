@@ -35,4 +35,8 @@ export class WebSocketService {
   getMessageUpdates() {
     return this.messageUpdatesSubject.asObservable(); // Méthode pour obtenir les mises à jour de messages
   }
+
+  emitMessageUpdate(message: any) {
+    this.messageUpdatesSubject.next(message);
+  }
 }

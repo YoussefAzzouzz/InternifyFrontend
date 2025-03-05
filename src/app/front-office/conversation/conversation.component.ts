@@ -93,8 +93,6 @@ export class ConversationComponent implements OnInit {
         const newConversation: Conversation = {
           id: 0,
           users: [user, this.connectedUser ],
-          createdAt: new Date(),
-          lastMessageTimestamp: new Date(),
           isFavorite: false,
           unreadMessagesCount: 0,
           notificationEnabled: true

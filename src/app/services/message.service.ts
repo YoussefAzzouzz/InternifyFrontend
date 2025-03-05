@@ -40,4 +40,8 @@ export class MessageService {
 
     return this.http.post<Message>(`${this.baseUrl}/send-with-attachment`, formData);
   }
+
+  pinMessage(messageId: number): Observable<void> {
+    return this.http.put<void>(`${this.baseUrl}/${messageId}/pin`, {});
+  }
 }

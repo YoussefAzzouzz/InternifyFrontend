@@ -218,3 +218,38 @@ audio {
   border-color: #00796b; /* Change border color on focus */
   outline: none; /* Remove default outline */
 }
+
+.pinned-messages {
+  background-color: #e0f7fa; /* Light blue background for pinned messages */
+  border: 1px solid #00796b; /* Dark green border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px; /* Internal padding */
+  margin-bottom: 10px; /* Space below the pinned messages */
+}
+
+.pinned-message {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center align items */
+  justify-content: space-between; /* Space between button and message */
+  margin: 5px 0; /* Space between pinned messages */
+}
+
+.pin-button {
+  background-color: #00796b; /* Button background color */
+  color: white; /* Button text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 5px 10px; /* Internal padding */
+  cursor: pointer; /* Pointer cursor */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.pin-button:hover {
+  background-color: #004d40; /* Darker shade on hover */
+}
+
+.pinned-messages h3 {
+  font-size: 20px; /* Reduce the font size */
+  color: #004d40; /* Change the text color */
+  font-weight: bold; /* Make the text bold */
+}
