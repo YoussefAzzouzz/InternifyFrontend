@@ -9,7 +9,7 @@ import * as SockJS from 'sockjs-client';
 export class WebSocketService {
   private stompClient: any;
   private messagesSubject = new Subject<any>();
-  private messageUpdatesSubject = new Subject<any>(); // Pour les mises à jour de messages
+  private messageUpdatesSubject = new Subject<any>();
 
   constructor() {
     this.connect();

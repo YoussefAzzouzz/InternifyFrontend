@@ -111,3 +111,11 @@ h2 {
   margin-top: 10px; /* Spacing above the message */
   font-weight: bold; /* Bold text */
 }
+
+.message-status {
+  display: flex; /* Use flexbox for status and date */
+  justify-content: space-between; /* Space between status and date */
+  margin-top: 5px; /* Space above status */
+  font-size: 0.9em; /* Smaller font size for status */
+  color: #3d3d3d; /* Gray color for status text */
+}

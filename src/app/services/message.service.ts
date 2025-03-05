@@ -26,4 +26,8 @@ export class MessageService {
   deleteMessage(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
+
+  updateMessageStatusToRead(messageId: number): Observable<Message> {
+    return this.http.put<Message>(`${this.baseUrl}/${messageId}/status`,{});
+  }
 }

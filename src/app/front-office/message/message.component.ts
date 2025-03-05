@@ -100,6 +100,7 @@ export class MessageComponent implements OnInit {
   loadMessages() {
     this.conversationService.getMessagesByConversation(this.conversationId).subscribe(data => {
       this.messages = data;
+      this.updateMessageStatusToRead();
     }, error => {
       console.error('Erreur lors de la récupération des messages:', error);
       this.errorMessage = 'Erreur lors de la récupération des messages.';
@@ -169,5 +170,24 @@ export class MessageComponent implements OnInit {
   cancelEdit() {
     this.editingMessageId = null; // Réinitialiser l'ID d'édition
     this.editedMessageContent = ''; // Réinitialiser le contenu
+  }
+
+  updateMessageStatusToRead() {
+    // Call the backend service to update the status of all messages in the conversation to "READ"
+    this.messages.forEach(message => {
+      // Check if the message is SENT and if the current user is the receiver
+      if (message.status === 'SENT' && message.receiver.id === this.userId) {
+        this.messageService.updateMessageStatusToRead(message.id).subscribe({
+          next: () => {
+            // Update the local message status
+            message.status = 'READ';
+            message.readAt = new Date(); // Set the read timestamp
+          },
+          error: (err) => {
+            console.error('Error updating message status:', err);
+          }
+        });
+      }
+    });
   }
 }

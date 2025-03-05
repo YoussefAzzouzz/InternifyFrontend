@@ -1,10 +1,11 @@
-<br><br>
 <div class="message-container">
-  <h2>{{conversation.users[0].id == userId ? conversation.users[1].username : conversation.users[0].username}}</h2>
+  <h2>{{ conversation.users[0].id === userId ? conversation.users[1].username : conversation.users[0].username }}</h2>
+
   <ul class="message-list" #scrollMe [scrollTop]="scrollMe.scrollHeight">
     <li *ngIf="messages.length === 0" class="no-messages">No messages yet</li>
+
     <li *ngFor="let message of messages">
-      <ng-container *ngIf="message.content !== 'Deleted message' || message.receiver.id == userId">
+      <ng-container *ngIf="message.content !== 'Deleted message' || message.receiver.id === userId">
         <div *ngIf="message.sender.id === userId" class="sender-message">
           <span *ngIf="editingMessageId !== message.id">{{ message.content }}</span>
           <input *ngIf="editingMessageId === message.id"
@@ -17,10 +18,17 @@
             <button *ngIf="editingMessageId !== message.id" (click)="startEditing(message)" class="button">Edit</button>
             <button *ngIf="editingMessageId !== message.id" (click)="deleteMessage(message.id)" class="button">Delete</button>
           </div>
+          <div class="message-status">
+            <span>{{ message.status }}:</span>
+            <span>
+              {{ message.status === 'SENT' ? (message.timestamp | date: 'dd/MM/yyyy HH:mm') : (message.readAt ? (message.readAt | date: 'dd/MM/yyyy HH:mm') : 'Not read') }}
+          </span>
+          </div>
         </div>
+
         <div *ngIf="message.sender.id !== userId" class="receiver-message">
-          <span *ngIf="editingMessageId !== message.id && message.content != 'Deleted message'">{{ message.content }}</span>
-          <div *ngIf="editingMessageId !== message.id && message.content == 'Deleted message'" class="deleted-message">{{ message.content }}</div>
+          <span *ngIf="editingMessageId !== message.id && message.content !== 'Deleted message'">{{ message.content }}</span>
+          <div *ngIf="editingMessageId !== message.id && message.content === 'Deleted message'" class="deleted-message">{{ message.content }}</div>
           <input *ngIf="editingMessageId === message.id"
                  type="text"
                  [(ngModel)]="editedMessageContent"
@@ -28,14 +36,22 @@
           <div class="button-container">
             <button *ngIf="editingMessageId === message.id" (click)="submitEdit()" class="button">Submit</button>
             <button *ngIf="editingMessageId === message.id" (click)="cancelEdit()" class="button">Cancel</button>
+            <div class="message-status">
+              <span>{{ message.status }}: </span>
+              <span>{{ message.status === 'SENT' ? (message.timestamp | date: 'dd/MM/yyyy HH:mm') : (message.readAt ? (message.readAt | date: 'dd/MM/yyyy HH:mm') : 'Not read') }}
+          </span>
+            </div>
           </div>
         </div>
       </ng-container>
     </li>
   </ul>
+
   <div class="input-container">
-    <input type="text" [(ngModel)]="newMessageContent" placeholder="Your message" class="new-message-input" />
+    <input type="text" [(ngModel)]="newMessageContent"
+           placeholder="Your message" class="new-message-input" />
     <button (click)="sendMessage()" class="button send-button">Send</button>
   </div>
+
   <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 </div>
