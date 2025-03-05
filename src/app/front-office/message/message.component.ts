@@ -23,6 +23,7 @@ export class MessageComponent implements OnInit {
   newMessageContent: string = '';
   editingMessageId: number | null = null; // ID du message en cours d'édition
   editedMessageContent: string = '';
+  selectedFile: File | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -154,6 +155,11 @@ export class MessageComponent implements OnInit {
   }
 
   submitEdit() {
+    this.errorMessage = '';
+    if (!this.editedMessageContent.trim()) {
+      this.errorMessage = 'The message cannot be empty.'; // Définir le message d'erreur
+      return; // Ne pas envoyer le message
+    }
     if (this.editingMessageId !== null) {
       this.messageService.updateMessage(this.editingMessageId,this.editedMessageContent).subscribe({
         next: () => {
@@ -189,5 +195,53 @@ export class MessageComponent implements OnInit {
         });
       }
     });
+  }
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0]; // Get the selected file
+  }
+
+  uploadMessage() {
+    this.errorMessage = ''; // Reset any previous error message
+
+    // Check if a file is selected
+    if (this.selectedFile) {
+      // Validate the file type
+      const validImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
+      const validPdfType = 'application/pdf';
+
+      if (!validImageTypes.includes(this.selectedFile.type) && this.selectedFile.type !== validPdfType) {
+        this.errorMessage = 'Please upload a valid image file (JPEG, PNG, GIF) or a PDF file.';
+        this.selectedFile = null; // Reset the selected file
+        return; // Exit the function if the file is not valid
+      }
+
+      const newMessage: Message = {
+        id: 0,
+        content: this.selectedFile.type === validPdfType ? 'PDF file attached' : 'Image file attached',
+        messageType: this.selectedFile.type === validPdfType ? 'PDF' : 'IMAGE',
+        sender: this.connectedUser ,
+        receiver: this.conversation.users[0].id === this.userId ? this.conversation.users[1] : this.conversation.users[0],
+        status: 'SENT',
+        isTyping: false,
+        isPinned: false,
+        readAt: null,
+        attachmentUrl: null,
+      };
+
+      // Send the message with the attachment
+      this.messageService.sendMessageWithAttachment(newMessage, this.selectedFile, this.conversationId).subscribe({
+        next: (response) => {
+          this.messages.push(response); // Add the new message to the messages array
+          this.selectedFile = null; // Reset the selected file
+        },
+        error: (err) => {
+          console.error('Error sending message:', err);
+          this.errorMessage = 'Failed to send message. Please try again.'; // Set the error message
+        }
+      });
+    } else {
+      this.errorMessage = 'Select a file first.'; // Set error if no file is selected
+    }
   }
 }

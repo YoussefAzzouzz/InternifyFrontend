@@ -5,7 +5,7 @@ export interface Message {
   id: number;
   content: string;
   messageType: string;
-  timestamp: Date;
+  timestamp?: Date;
   sender: User; // Changement ici
   receiver: User; // Changement ici
   status: string;
@@ -13,5 +13,5 @@ export interface Message {
   isPinned: boolean;
   readAt: Date | null;
   attachmentUrl: string | null;
-  conversation: Conversation;
+  conversation?: Conversation;
 }

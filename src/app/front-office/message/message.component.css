@@ -1,29 +1,29 @@
 .message-container {
-  max-width: 600px; /* Largeur maximale du conteneur */
-  margin: 0 auto; /* Centrer le conteneur */
-  padding: 20px; /* Espacement interne */
-  border: 1px solid #ccc; /* Bordure du conteneur */
-  border-radius: 8px; /* Coins arrondis */
-  background-color: #f9f9f9; /* Couleur de fond */
+  max-width: 600px; /* Maximum width of the container */
+  margin: 0 auto; /* Center the container */
+  padding: 20px; /* Internal spacing */
+  border: 1px solid #ccc; /* Border of the container */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #f9f9f9; /* Background color */
 }
 
 .message-list {
-  list-style-type: none; /* Supprimer les puces */
-  padding: 0; /* Supprimer le remplissage par défaut */
-  max-height: 380px; /* Hauteur maximale pour la liste des messages */
-  overflow-y: auto; /* Activer le défilement vertical */
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove default padding */
+  max-height: 380px; /* Maximum height for the message list */
+  overflow-y: auto; /* Enable vertical scrolling */
 }
 
 .sender-message {
-  background-color: #e0f7fa; /* Couleur de fond bleu clair */
-  border: 1px solid #00796b; /* Bordure verte foncée */
-  border-radius: 5px; /* Coins arrondis */
-  padding: 10px; /* Espacement interne */
-  margin: 10px 0; /* Espacement en bas */
-  text-align: right; /* Alignement à gauche */
+  background-color: #e0f7fa; /* Light blue background */
+  border: 1px solid #00796b; /* Dark green border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px; /* Internal spacing */
+  margin: 10px 0; /* Bottom margin */
+  text-align: right; /* Align text to the right */
   display: flex; /* Use flexbox for alignment */
   flex-direction: column; /* Stack children vertically */
-  align-items: flex-end;
+  align-items: flex-end; /* Align items to the end */
 }
 
 .no-messages {
@@ -33,81 +33,81 @@
 }
 
 .receiver-message {
-  background-color: #c8e6c9; /* Couleur de fond vert clair */
-  border: 1px solid #388e3c; /* Bordure verte foncée */
-  border-radius: 5px; /* Coins arrondis */
-  padding: 10px; /* Espacement interne */
-  margin: 10px 0; /* Espacement en bas */
-  text-align: left; /* Alignement à droite */
+  background-color: #c8e6c9; /* Light green background */
+  border: 1px solid #388e3c; /* Dark green border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px; /* Internal spacing */
+  margin: 10px 0; /* Bottom margin */
+  text-align: left; /* Align text to the left */
 }
 
 .input-container {
-  display: flex; /* Utiliser flexbox pour aligner les éléments */
-  align-items: center; /* Aligne les éléments au centre */
-  margin-top: 10px; /* Marge en haut */
+  display: flex; /* Use flexbox to align elements */
+  align-items: center; /* Center align items */
+  margin-top: 10px; /* Top margin */
 }
 
 .new-message-input, .edit-input {
-  width: 100%; /* Prend toute la largeur disponible */
-  height: 40px; /* Hauteur fixe pour correspondre aux zones de message */
-  padding: 10px; /* Rembourrage interne */
-  border: 1px solid #ccc; /* Bordure */
-  border-radius: 5px; /* Coins arrondis */
-  box-sizing: border-box; /* Inclut les bordures et le rembourrage dans la taille */
+  width: 100%; /* Take full available width */
+  height: 40px; /* Fixed height to match message areas */
+  padding: 10px; /* Internal padding */
+  border: 1px solid #ccc; /* Border */
+  border-radius: 5px; /* Rounded corners */
+  box-sizing: border-box; /* Include borders and padding in size */
 }
 
 .button-container {
-  display: flex; /* Utiliser flexbox pour aligner les boutons */
-  justify-content: flex-start; /* Aligner les boutons à gauche */
-  gap: 5px; /* Espacement entre les boutons */
-  margin-top: 10px; /* Marge en haut */
+  display: flex; /* Use flexbox to align buttons */
+  justify-content: flex-start; /* Align buttons to the left */
+  gap: 5px; /* Space between buttons */
+  margin-top: 10px; /* Top margin */
 }
 
 .button {
-  background-color: #00796b; /* Couleur de fond des boutons */
-  color: white; /* Couleur du texte des boutons */
-  border: none; /* Pas de bordure */
-  border-radius: 5px; /* Coins arrondis */
-  padding: 5px 10px; /* Espacement interne */
-  cursor: pointer; /* Curseur en main */
+  background-color: #00796b; /* Button background color */
+  color: white; /* Button text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 5px 10px; /* Internal padding */
+  cursor: pointer; /* Pointer cursor */
 }
 
 .button:hover {
-  background-color: #004d40; /* Couleur de fond au survol */
+  background-color: #004d40; /* Background color on hover */
 }
 
 .send-button {
-  background-color: #388e3c; /* Couleur de fond du bouton d'envoi */
-  margin-left: 5px;
+  background-color: #388e3c; /* Background color for send button */
+  margin-left: 5px; /* Left margin */
 }
 
 .send-button:hover {
-  background-color: #2e7d32; /* Couleur de fond au survol du bouton d'envoi */
+  background-color: #2e7d32; /* Background color on hover for send button */
 }
 
 h2 {
-  text-align: center; /* Centrer le titre */
-  color: #00796b; /* Couleur du texte */
-  font-size: 24px; /* Taille de la police */
-  margin-bottom: 20px; /* Marge en bas */
-  font-weight: bold; /* Mettre le texte en gras */
-  text-transform: uppercase; /* Mettre le texte en majuscules */
-  border-bottom: 2px solid #00796b; /* Bordure en bas */
-  padding-bottom: 10px; /* Espacement en bas de la bordure */
+  text-align: center; /* Center the title */
+  color: #00796b; /* Text color */
+  font-size: 24px; /* Font size */
+  margin-bottom: 20px; /* Bottom margin */
+  font-weight: bold; /* Bold text */
+  text-transform: uppercase; /* Uppercase text */
+  border-bottom: 2px solid #00796b; /* Bottom border */
+  padding-bottom: 10px; /* Padding below the border */
 }
 
 .deleted-message {
-  background-color: #ffebee; /* Couleur de fond rouge clair */
-  border: 1px solid #f44336; /* Bordure rouge foncé */
-  border-radius: 5px; /* Coins arrondis */
-  padding: 10px; /* Espacement interne */
-  margin: 10px 0; /* Espacement en bas */
-  color: #f44336; /* Couleur du texte rouge foncé */
-  text-align: center; /* Centrer le texte */
+  background-color: #ffebee; /* Light red background */
+  border: 1px solid #f44336; /* Dark red border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px; /* Internal spacing */
+  margin: 10px 0; /* Bottom margin */
+  color: #f44336; /* Dark red text color */
+  text-align: center; /* Center the text */
 }
 
 .error-message {
-  color: #dc3545; /* Red color for the error message */
+  color: #dc3545; /* Red color for error message */
   margin-top: 10px; /* Spacing above the message */
   font-weight: bold; /* Bold text */
 }
@@ -118,4 +118,42 @@ h2 {
   margin-top: 5px; /* Space above status */
   font-size: 0.9em; /* Smaller font size for status */
   color: #3d3d3d; /* Gray color for status text */
+}
+
+.file-upload-container {
+  margin-top: 10px; /* Top margin */
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Center align items */
+  justify-content: space-between; /* Space between elements */
+}
+
+.file-upload-container input[type="file"] {
+  margin-right: 10px; /* Right margin for file input */
+}
+
+.message-image {
+  max-width: 500px; /* Increase the maximum width of the image */
+  max-height: 500px; /* Increase the maximum height of the image */
+  display: block; /* Make the image a block element */
+  margin: 0 auto; /* Center the image */
+}
+
+.pdf-link {
+  display: inline-block; /* Allows centering */
+  margin: 10px 0; /* Space above and below the link */
+  padding: 8px 12px; /* Padding around the link */
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white; /* Text color */
+  text-decoration: none; /* Remove underline */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.pdf-link:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+.pdf-container {
+  text-align: center; /* Center the content */
+  margin: 10px 0; /* Space above and below the container */
 }
