@@ -13,10 +13,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "sockjs-client"
+            ],
             "outputPath": "dist/internify",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
+              "src/polyfills.ts",
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
@@ -27,7 +31,8 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {

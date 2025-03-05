@@ -1,0 +1,113 @@
+.message-container {
+  max-width: 600px; /* Largeur maximale du conteneur */
+  margin: 0 auto; /* Centrer le conteneur */
+  padding: 20px; /* Espacement interne */
+  border: 1px solid #ccc; /* Bordure du conteneur */
+  border-radius: 8px; /* Coins arrondis */
+  background-color: #f9f9f9; /* Couleur de fond */
+}
+
+.message-list {
+  list-style-type: none; /* Supprimer les puces */
+  padding: 0; /* Supprimer le remplissage par défaut */
+  max-height: 380px; /* Hauteur maximale pour la liste des messages */
+  overflow-y: auto; /* Activer le défilement vertical */
+}
+
+.sender-message {
+  background-color: #e0f7fa; /* Couleur de fond bleu clair */
+  border: 1px solid #00796b; /* Bordure verte foncée */
+  border-radius: 5px; /* Coins arrondis */
+  padding: 10px; /* Espacement interne */
+  margin: 10px 0; /* Espacement en bas */
+  text-align: right; /* Alignement à gauche */
+  display: flex; /* Use flexbox for alignment */
+  flex-direction: column; /* Stack children vertically */
+  align-items: flex-end;
+}
+
+.no-messages {
+  text-align: center; /* Center the text */
+  color: #888; /* Light gray color */
+  margin: 20px 0; /* Margin for spacing */
+}
+
+.receiver-message {
+  background-color: #c8e6c9; /* Couleur de fond vert clair */
+  border: 1px solid #388e3c; /* Bordure verte foncée */
+  border-radius: 5px; /* Coins arrondis */
+  padding: 10px; /* Espacement interne */
+  margin: 10px 0; /* Espacement en bas */
+  text-align: left; /* Alignement à droite */
+}
+
+.input-container {
+  display: flex; /* Utiliser flexbox pour aligner les éléments */
+  align-items: center; /* Aligne les éléments au centre */
+  margin-top: 10px; /* Marge en haut */
+}
+
+.new-message-input, .edit-input {
+  width: 100%; /* Prend toute la largeur disponible */
+  height: 40px; /* Hauteur fixe pour correspondre aux zones de message */
+  padding: 10px; /* Rembourrage interne */
+  border: 1px solid #ccc; /* Bordure */
+  border-radius: 5px; /* Coins arrondis */
+  box-sizing: border-box; /* Inclut les bordures et le rembourrage dans la taille */
+}
+
+.button-container {
+  display: flex; /* Utiliser flexbox pour aligner les boutons */
+  justify-content: flex-start; /* Aligner les boutons à gauche */
+  gap: 5px; /* Espacement entre les boutons */
+  margin-top: 10px; /* Marge en haut */
+}
+
+.button {
+  background-color: #00796b; /* Couleur de fond des boutons */
+  color: white; /* Couleur du texte des boutons */
+  border: none; /* Pas de bordure */
+  border-radius: 5px; /* Coins arrondis */
+  padding: 5px 10px; /* Espacement interne */
+  cursor: pointer; /* Curseur en main */
+}
+
+.button:hover {
+  background-color: #004d40; /* Couleur de fond au survol */
+}
+
+.send-button {
+  background-color: #388e3c; /* Couleur de fond du bouton d'envoi */
+  margin-left: 5px;
+}
+
+.send-button:hover {
+  background-color: #2e7d32; /* Couleur de fond au survol du bouton d'envoi */
+}
+
+h2 {
+  text-align: center; /* Centrer le titre */
+  color: #00796b; /* Couleur du texte */
+  font-size: 24px; /* Taille de la police */
+  margin-bottom: 20px; /* Marge en bas */
+  font-weight: bold; /* Mettre le texte en gras */
+  text-transform: uppercase; /* Mettre le texte en majuscules */
+  border-bottom: 2px solid #00796b; /* Bordure en bas */
+  padding-bottom: 10px; /* Espacement en bas de la bordure */
+}
+
+.deleted-message {
+  background-color: #ffebee; /* Couleur de fond rouge clair */
+  border: 1px solid #f44336; /* Bordure rouge foncé */
+  border-radius: 5px; /* Coins arrondis */
+  padding: 10px; /* Espacement interne */
+  margin: 10px 0; /* Espacement en bas */
+  color: #f44336; /* Couleur du texte rouge foncé */
+  text-align: center; /* Centrer le texte */
+}
+
+.error-message {
+  color: #dc3545; /* Red color for the error message */
+  margin-top: 10px; /* Spacing above the message */
+  font-weight: bold; /* Bold text */
+}
