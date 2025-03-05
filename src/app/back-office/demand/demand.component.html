@@ -1,0 +1,18 @@
+<h2 class="demand-list-title">Demand List</h2>
+<ul class="demand-list">
+  <li *ngFor="let demand of demands" class="demand-item">
+    <div class="demand-info">
+      <h3 class="demand-title">{{ demand.title }}</h3>
+      <p class="demand-description"><strong>Description: </strong>{{ demand.description }}</p>
+      <p class="demand-field"><strong>Field:</strong> {{ demand.field }}</p>
+      <p class="demand-date"><strong>Date:</strong> {{ demand.date }}</p>
+      <p class="demand-status"><strong>Status:</strong> {{ demand.status }}</p>
+    </div>
+    <div class="demand-actions">
+      <button class="btn btn-view" [routerLink]="['/back-office/details', demand.id]">View Details</button>
+      <button class="btn btn-edit" [routerLink]="['/back-office/edit', demand.id]">Edit</button>
+      <button class="btn btn-delete" (click)="deleteDemand(demand.id)">Delete</button>
+    </div>
+  </li>
+</ul>
+<button class="btn btn-add" [routerLink]="['/back-office/add']">Add New Demand</button>

@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import {ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
+import {NgxPaginationModule} from "ngx-pagination";
+import {PaginationModule} from "ngx-bootstrap/pagination";
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import {RouterModule} from "@angular/router";
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,
+    NgxPaginationModule,
+    PaginationModule.forRoot(),
     ReactiveFormsModule
   ],
   providers: [],

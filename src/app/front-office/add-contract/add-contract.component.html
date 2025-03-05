@@ -1,0 +1,59 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <div class="navbar-logo">
+      <img src="assets/images/logo.png" alt="Logo" class="logo">
+    </div>
+    <span class="app-name">Internify</span> <!-- Added app name -->
+  </div>
+  <div class="navbar-right">
+    <a routerLink="/login" class="nav-link">Login</a>
+    <a routerLink="/signup" class="nav-link">Sign Up</a>
+    <a routerLink="/internships-offers" class="nav-link">Internships Offers</a>
+    <a routerLink="/internships-demands" class="nav-link">Internships Demands</a>
+    <a routerLink="/view" class="nav-link">Documents</a>
+    <a routerLink="/chat" class="nav-link">Chat</a>
+  </div>
+</nav>
+
+<div class="main-content">
+  <div class="contract-form-container">
+    <h2>Add Contract</h2>
+    <form (submit)="submitContract()">
+      <div class="form-group">
+        <label>Entreprise ID:</label>
+        <input type="text" [value]="contract.entrepriseId" readonly />
+      </div>
+
+
+
+      <div class="form-group">
+        <label>Start Date:</label>
+        <input type="date" [(ngModel)]="contract.startDate" name="startDate" required />
+      </div>
+
+      <div class="form-group">
+        <label>End Date:</label>
+        <input type="date" [(ngModel)]="contract.endDate" name="endDate" required />
+      </div>
+
+      <div class="form-group">
+        <label>Status:</label>
+        <select [(ngModel)]="contract.status" name="status" required>
+          <option value="PENDING">Pending</option>
+          <option value="SIGNED">Signed</option>
+
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Upload File:</label>
+        <input type="file" (change)="onFileSelected($event)" accept=".pdf" required />
+      </div>
+
+      <button type="submit" class="submit-btn">Submit</button>
+      <button class="submit-btn" [routerLink]="['/front-office/contracts']">
+        View My Contracts
+      </button>
+    </form>
+  </div>
+</div>

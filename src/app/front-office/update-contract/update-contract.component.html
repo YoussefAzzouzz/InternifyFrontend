@@ -1,0 +1,47 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <div class="navbar-logo">
+      <img src="assets/images/logo.png" alt="Logo" class="logo">
+    </div>
+    <span class="app-name">Internify</span> <!-- Added app name -->
+  </div>
+  <div class="navbar-right">
+    <a routerLink="/login" class="nav-link">Login</a>
+    <a routerLink="/signup" class="nav-link">Sign Up</a>
+    <a routerLink="/internships-offers" class="nav-link">Internships Offers</a>
+    <a routerLink="/internships-demands" class="nav-link">Internships Demands</a>
+    <a routerLink="/view" class="nav-link">Documents</a>
+    <a routerLink="/chat" class="nav-link">Chat</a>
+  </div>
+</nav>
+
+
+
+<div class="container">
+  <div class="form-container">
+    <h2>Update Contract</h2>
+    <form (ngSubmit)="updateContract()">
+      <div class="form-group">
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate" class="form-control" [(ngModel)]="contract.startDate" name="startDate">
+      </div>
+
+      <div class="form-group">
+        <label for="endDate">End Date</label>
+        <input type="date" id="endDate" class="form-control" [(ngModel)]="contract.endDate" name="endDate">
+      </div>
+
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select id="status" class="form-control" [(ngModel)]="contract.status" name="status">
+          <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block" >Save Changes</button>
+      <button class="btn btn-primary btn-block" [routerLink]="['/front-office/contracts']">
+        View My Contracts
+      </button>
+    </form>
+  </div>
+</div>

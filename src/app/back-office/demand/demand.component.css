@@ -1,0 +1,119 @@
+/* Demand List Page Styles */
+.demand-list-title {
+  font-size: 36px;
+  color: #003366;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.demand-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.demand-item {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.demand-item:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.demand-info {
+  flex: 1;
+  font-size: 16px;
+}
+
+.demand-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+.demand-description {
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.demand-field,
+.demand-date,
+.demand-status {
+  color: #777;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.demand-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn-view {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-view:hover {
+  background-color: #0056b3;
+}
+
+.btn-edit {
+  background-color: #ffc107;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #e0a800;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+
+.btn-add {
+  padding: 12px 25px;
+  background-color: #28a745;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  display: block;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-add:hover {
+  background-color: #218838;
+}
