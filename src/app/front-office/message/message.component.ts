@@ -24,6 +24,9 @@ export class MessageComponent implements OnInit {
   editingMessageId: number | null = null; // ID du message en cours d'édition
   editedMessageContent: string = '';
   selectedFile: File | null = null;
+  mediaRecorder: MediaRecorder | null = null;
+  audioChunks: Blob[] = [];
+  isRecording: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -242,6 +245,71 @@ export class MessageComponent implements OnInit {
       });
     } else {
       this.errorMessage = 'Select a file first.'; // Set error if no file is selected
+    }
+  }
+
+  uploadAudio(audioBlob: Blob) {
+    const formData = new FormData();
+
+    const timestamp = new Date().getTime(); // Get the current timestamp
+    const audioFileName = `voice-message-${timestamp}.wav`; // Create a unique file name
+    const audioFile = new File([audioBlob], audioFileName, { type: 'audio/wav' });
+
+    const newMessage: Message = {
+      id: 0,
+      content: 'Audio message attached',
+      messageType: 'AUDIO',
+      sender: this.connectedUser ,
+      receiver: this.conversation.users[0].id === this.userId ? this.conversation.users[1] : this.conversation.users[0],
+      status: 'SENT',
+      isTyping: false,
+      isPinned: false,
+      readAt: null,
+      attachmentUrl: null,
+    };
+
+    // Send the message with the audio attachment
+    this.messageService.sendMessageWithAttachment(newMessage, audioFile, this.conversationId).subscribe({
+      next: (response) => {
+        this.messages.push(response); // Add the new message to the messages array
+      },
+      error: (err) => {
+        console.error('Error sending message:', err);
+        this.errorMessage = 'Failed to send message. Please try again.'; // Set the error message
+      }
+    });
+  }
+
+  startRecording() {
+    navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+      this.mediaRecorder = new MediaRecorder(stream);
+      this.audioChunks = [];
+      this.mediaRecorder.start();
+      this.isRecording = true;
+
+      this.mediaRecorder.ondataavailable = event => {
+        this.audioChunks.push(event.data);
+      };
+
+      this.mediaRecorder.onstop = () => {
+        const audioBlob = new Blob(this.audioChunks, { type: 'audio/wav' });
+        this.uploadAudio(audioBlob);
+      };
+    });
+  }
+
+  stopRecording() {
+    if (this.mediaRecorder) {
+      this.mediaRecorder.stop();
+      this.isRecording = false;
+    }
+  }
+
+  toggleRecording() {
+    if (this.isRecording) {
+      this.stopRecording();
+    } else {
+      this.startRecording();
     }
   }
 }

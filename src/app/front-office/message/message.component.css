@@ -132,8 +132,8 @@ h2 {
 }
 
 .message-image {
-  max-width: 500px; /* Increase the maximum width of the image */
-  max-height: 500px; /* Increase the maximum height of the image */
+  max-width: 490px; /* Increase the maximum width of the image */
+  max-height: 490px; /* Increase the maximum height of the image */
   display: block; /* Make the image a block element */
   margin: 0 auto; /* Center the image */
 }
@@ -156,4 +156,65 @@ h2 {
 .pdf-container {
   text-align: center; /* Center the content */
   margin: 10px 0; /* Space above and below the container */
+}
+
+/* Audio Player Styles */
+audio {
+  width: 100%; /* Full width for audio player */
+  margin-top: 5px; /* Space above the audio player */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #f1f1f1; /* Light background for audio player */
+  border: 1px solid #ccc; /* Light border */
+}
+
+/* File Upload Container */
+.file-upload-container {
+  margin-top: 10px; /* Top margin */
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Center align items */
+  justify-content: space-between; /* Space between elements */
+  border: 1px solid #ccc; /* Light border around the container */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px; /* Internal padding */
+  background-color: #f9f9f9; /* Light background color */
+}
+
+.file-upload-container input[type="file"] {
+  margin-right: 10px; /* Right margin for file input */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 5px; /* Internal padding */
+  width: 100%; /* Full width for file input */
+  box-sizing: border-box; /* Include padding and border in width */
+}
+
+/* File Upload Button */
+.file-upload-container .send-button {
+  background-color: #388e3c; /* Background color for send button */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 5px 10px; /* Internal padding */
+  cursor: pointer; /* Pointer cursor */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.file-upload-container .send-button:hover {
+  background-color: #2e7d32; /* Darker shade on hover */
+}
+
+/* Adjustments for the Input Fields */
+.new-message-input, .edit-input {
+  width: calc(100% - 120px); /* Adjust width to accommodate buttons */
+  height: 40px; /* Fixed height to match message areas */
+  padding: 10px; /* Internal padding */
+  border: 1px solid #ccc; /* Border */
+  border-radius: 5px; /* Rounded corners */
+  box-sizing: border-box; /* Include borders and padding in size */
+  transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+.new-message-input:focus, .edit-input:focus {
+  border-color: #00796b; /* Change border color on focus */
+  outline: none; /* Remove default outline */
 }

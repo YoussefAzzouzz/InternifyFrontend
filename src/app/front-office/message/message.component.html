@@ -1,3 +1,4 @@
+<br>
 <div class="message-container">
   <h2>{{ conversation.users[0].id === userId ? conversation.users[1].username : conversation.users[0].username }}</h2>
 
@@ -24,6 +25,12 @@
               {{ message.attachmentUrl.split('/').pop() }} <!-- Display the file name -->
             </a>
           </div>
+
+          <!-- Display audio attachment -->
+          <audio *ngIf="message.attachmentUrl && message.messageType === 'AUDIO' && message.content !== 'Deleted message'" controls>
+            <source [src]="'http://localhost:8089/internify/messages/upload/' + message.attachmentUrl.split('/').pop()" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
 
           <input *ngIf="editingMessageId === message.id"
                  type="text"
@@ -62,6 +69,12 @@
             </a>
           </div>
 
+          <!-- Display audio attachment -->
+          <audio *ngIf="message.attachmentUrl && message.messageType === 'AUDIO' && message.content !== 'Deleted message'" controls>
+            <source [src]="'http://localhost:8089/internify/messages/upload/' + message.attachmentUrl.split('/').pop()" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+
           <div *ngIf="editingMessageId !== message.id && message.content === 'Deleted message'" class="deleted-message">{{ message.content }}</div>
           <input *ngIf="editingMessageId === message.id"
                  type="text"
@@ -84,6 +97,9 @@
     <input type="text" [(ngModel)]="newMessageContent"
            placeholder="Your message" class="new-message-input" />
     <button (click)="sendMessage()" class="button send-button">Send</button>
+    <button (click)="toggleRecording()" class="button send-button">
+      {{ isRecording ? 'Stop' : 'Record' }}
+    </button>
   </div>
 
   <div class="file-upload-container">
