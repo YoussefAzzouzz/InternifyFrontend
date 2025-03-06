@@ -28,7 +28,7 @@ export class OfferFormComponent implements OnInit {
       category: ['', Validators.required]
     }, { validator: this.dateValidator });
   }
-
+  //validators
   // Validation personnalisée : Date d'expiration doit être après date de publication
   dateValidator(group: AbstractControl) {
     const datePub = new Date(group.get('datePub')?.value);
