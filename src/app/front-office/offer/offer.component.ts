@@ -91,7 +91,7 @@ export class OfferComponent implements OnInit {
       this.updatePaginatedOffers();
     });
   }
-
+//pagination
   changePage(newPage: number) {
     if (newPage < 1 || newPage > this.totalPages) {
       return;
