@@ -1,0 +1,91 @@
+.message-stats {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  background-color: #f4f4f4; /* Light background for the component */
+  border-radius: 8px; /* Rounded corners for the component */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.search-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center; /* Center the input */
+}
+
+.search-container input {
+  padding: 10px;
+  margin-right: 10px; /* Space between input and button */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 250px; /* Fixed width for the input */
+}
+
+.button-container {
+  display: flex; /* Arrange buttons in a row */
+  justify-content: center; /* Center the buttons */
+  margin-bottom: 20px; /* Space below the buttons */
+}
+
+.button-container button {
+  padding: 10px 15px;
+  margin: 0 5px; /* Space between buttons */
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.button-container button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+.stats-container {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+}
+
+.types-container {
+  display: flex; /* Arrange types horizontally */
+  justify-content: center; /* Center the types */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  margin-top: 20px; /* Space above the types */
+}
+
+.stat {
+  background-color: #f9f9f9; /* Light background for stats */
+  border: 1px solid #ddd; /* Border around each stat */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px;
+  margin: 10px; /* Space between stats */
+  text-align: center; /* Center text */
+  width: 150px; /* Fixed width for each stat box */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.total-stat {
+  background-color: #e0f7fa; /* Light blue background for total */
+  border: 1px solid #b2ebf2; /* Border color for total */
+}
+
+.stat-label {
+  font-size: 16px; /* Font size for labels */
+  color: #555; /* Darker color for labels */
+}
+
+.stat-value {
+  font-size: 24px; /* Larger font size for values */
+  font-weight: bold; /* Bold for emphasis */
+  color: #333; /* Darker color for values */
+}
+
+.error-message {
+  color: red; /* Red color for error message */
+  margin-bottom: 10px; /* Space above the error message */
+  font-size: 14px; /* Font size for error message */
+}

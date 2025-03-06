@@ -5,10 +5,11 @@ import { BackOfficeRoutingModule } from './back-office-routing.module';
 import { BackOfficeComponent } from './back-office.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DemandComponent } from './demand/demand.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DemandFormComponent } from './demand-form/demand-form.component';
 import { DemandDetailsComponent } from './demand-details/demand-details.component';
 import { BackOfficeLayoutComponent } from './back-office-layout/back-office-layout.component';
+import { MessageStatsComponent } from './message-stats/message-stats.component';
 
 
 @NgModule({
@@ -18,12 +19,14 @@ import { BackOfficeLayoutComponent } from './back-office-layout/back-office-layo
     DemandComponent,
     DemandFormComponent,
     DemandDetailsComponent,
-    BackOfficeLayoutComponent
+    BackOfficeLayoutComponent,
+    MessageStatsComponent
   ],
     imports: [
         CommonModule,
         BackOfficeRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FormsModule
     ]
 })
 export class BackOfficeModule { }

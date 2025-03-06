@@ -44,4 +44,20 @@ export class MessageService {
   pinMessage(messageId: number): Observable<void> {
     return this.http.put<void>(`${this.baseUrl}/${messageId}/pin`, {});
   }
+
+  getMessageStats(userId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/user/${userId}/message-stats`);
+  }
+
+  getSentMessageStats(userId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/user/${userId}/sent-message-stats`);
+  }
+
+  getReceivedMessageStats(userId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/user/${userId}/received-message-stats`);
+  }
+
+  getAllMessageStats(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/message-stats`);
+  }
 }

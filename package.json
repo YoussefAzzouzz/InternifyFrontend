@@ -23,6 +23,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@stomp/stompjs": "^6.1.2",
     "bootstrap": "^5.3.3",
+    "chart.js": "^4.4.8",
     "crypto-browserify": "^3.12.1",
     "rxjs": "~7.8.0",
     "socket.io-client": "^4.8.1",
