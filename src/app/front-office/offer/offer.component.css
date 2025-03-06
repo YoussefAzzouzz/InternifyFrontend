@@ -1,12 +1,9 @@
-/* Conteneur de la barre de recherche */
 .search-container {
   position: relative;
   width: 50%;
   max-width: 500px;
-  margin: 0 auto;
 }
 
-/* Icône de recherche */
 .search-icon {
   position: absolute;
   top: 50%;
@@ -16,7 +13,6 @@
   color: #6c757d;
 }
 
-/* Champ de recherche stylisé */
 .search-input {
   width: 100%;
   padding: 12px 40px;
@@ -32,12 +28,14 @@
   border-color: #007bff;
   box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
 }
-
-/* Cartes d'offres */
 .offer-card {
+  position: relative; /* Ensure the card can contain absolutely positioned elements */
+  max-width: 300px;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  border-radius: 10px;
-  overflow: hidden;
 }
 
 .offer-card:hover {
@@ -45,41 +43,82 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.card-img-top {
-  height: 180px;
+.content {
+  padding: 1.1rem;
+}
+
+.image {
   object-fit: cover;
+  width: 100%;
+  height: 150px;
+  background-color: rgb(4, 59, 92, 1); /* Light blue color */
 }
 
-.card-body {
-  padding: 15px;
+.title {
+  color: #111827;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
 }
 
-.card-title {
-  font-size: 1.2rem;
-  font-weight: bold;
+.desc {
+  margin-top: 0.5rem;
+  color: #6B7280;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
-/* Boutons d'action */
-.btn {
-  transition: all 0.3s ease-in-out;
+/* Buttons in the right bottom corner */
+.btn-container {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
 }
 
-.btn:hover {
+/* Edit and Delete Buttons */
+.btn-edit, .btn-delete {
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 25px;
+  transition: 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* Edit Button Styling */
+.btn-edit {
+  background-color: #ffb81c;
+  color: white;
+  border: none;
+}
+
+.btn-edit i {
+  font-size: 16px;
+}
+
+/* Hover Effect for Edit Button */
+.btn-edit:hover {
+  background-color: #f79c42;
   transform: scale(1.05);
 }
 
-/* Bouton "Add New Offer" */
-.btn-primary {
-  padding: 12px 25px;
-  font-size: 1.1rem;
-  border-radius: 50px;
+/* Delete Button Styling */
+.btn-delete {
+  background-color: #e63946;
+  color: white;
+  border: none;
 }
 
-.btn-primary:hover {
-  background-color: #0056b3;
+.btn-delete i {
+  font-size: 16px;
 }
 
-/* Icônes */
-i {
-  margin-right: 5px;
+/* Hover Effect for Delete Button */
+.btn-delete:hover {
+  background-color: #d62828;
+  transform: scale(1.05);
 }

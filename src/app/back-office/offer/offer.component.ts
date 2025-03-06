@@ -16,7 +16,6 @@ export class OfferComponent implements OnInit {
     startDate: '',
     endDate: ''
   };
-
   private searchSubject = new Subject<string>();
 
   constructor(private offerService: OfferService) {}
@@ -55,4 +54,5 @@ export class OfferComponent implements OnInit {
       this.offers = data;
     });
   }
+
 }

@@ -1,0 +1,94 @@
+/* Form Container */
+.offer-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styling */
+.form-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #2980b9;
+  font-weight: bold;
+}
+
+/* Input and Textarea Styling */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #34495e;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #bdc3c7;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: #2980b9;
+  outline: none;
+}
+
+/* Error Messages */
+.error {
+  color: #e74c3c;
+  font-size: 0.875rem;
+  margin-top: 5px;
+}
+
+.error small {
+  display: block;
+}
+
+/* Button Styling */
+.btn-submit {
+  width: 100%;
+  padding: 15px;
+  background-color: #2980b9;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit:disabled {
+  background-color: #bdc3c7;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background-color: #3498db;
+}
+
+/* Form Input Field Focus */
+.form-input:focus {
+  border-color: #3498db;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .offer-form {
+    padding: 20px;
+  }
+
+  .form-title {
+    font-size: 1.75rem;
+  }
+}
+

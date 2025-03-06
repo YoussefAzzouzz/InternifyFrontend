@@ -1,52 +1,65 @@
 <div class="container mt-4">
   <h2 class="text-center text-primary mb-4">Offer List</h2>
 
-  <!-- Barre de recherche centrée -->
+  <!-- Search Bar -->
   <div class="d-flex justify-content-center mb-4">
     <div class="search-container">
       <i class="fas fa-search search-icon"></i>
-      <input type="text" class="search-input" placeholder="Search for offers..." (input)="onSearchInput($event)">
+      <input type="text" class="search-input" placeholder="Search for offers..." (input)="onSearchInput($event)" minlength="3">
+      <small class="text-danger d-none" id="searchError">Please enter at least 3 characters.</small>
     </div>
   </div>
 
-  <!-- No offers available -->
+  <!-- No offers available message -->
   <div *ngIf="offers.length === 0" class="alert alert-warning text-center mt-4">
     <i class="fas fa-exclamation-circle"></i> No offers available.
   </div>
 
-  <!-- List of offers -->
-  <div class="row mt-4" *ngIf="offers.length > 0">
-    <div class="col-md-4" *ngFor="let offer of offers">
+  <!-- Offer Cards (3x3 grid) -->
+  <div class="row mt-4" *ngIf="paginatedOffers.length > 0">
+    <div class="col-md-4 mb-4" *ngFor="let offer of paginatedOffers">
       <div class="card offer-card shadow-sm border-0">
-        <img [src]="offer.image || 'assets/default-offer.jpg'" class="card-img-top rounded-top" alt="Offer Image">
-        <div class="card-body">
-          <h5 class="card-title text-success"><i class="fas fa-tag"></i> {{ offer.title }}</h5>
-          <p class="card-text text-muted"><strong>Description:</strong> {{ offer.description }}</p>
-          <p class="text-muted"><i class="fas fa-calendar"></i> Published: {{ offer.datePub | date }}</p>
-
-          <!-- Affichage du nombre de commentaires et d'applications -->
+        <div class="image"></div>
+        <div class="content">
+          <a [routerLink]="['/front-office/offer-details', offer.id]">
+            <span class="title">{{ offer.title }}</span>
+          </a>
+          <p class="desc">{{ offer.description }}</p>
           <div class="d-flex justify-content-between mt-2">
             <span class="text-info"><i class="fas fa-comments"></i> 💬 {{ commentsCount[offer.id] || 0 }}</span>
             <span class="text-warning"><i class="fas fa-file-alt"></i> 📄 {{ applicationsCount[offer.id] || 0 }}</span>
           </div>
+          <a class="action" [routerLink]="['/front-office/offer-details', offer.id]">
+            Find out more
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
 
-          <div class="d-flex justify-content-between mt-3">
-            <button class="btn btn-outline-primary btn-sm" [routerLink]="['/front-office/offer-details', offer.id]">
-              <i class="fas fa-eye"></i> View
-            </button>
-            <button class="btn btn-outline-warning btn-sm" [routerLink]="['/front-office/edit-offer', offer.id]">
-              <i class="fas fa-edit"></i> Edit
-            </button>
-            <button class="btn btn-outline-danger btn-sm" (click)="deleteOffer(offer.id)">
-              <i class="fas fa-trash-alt"></i> Delete
-            </button>
-          </div>
+        <!-- Edit and Delete buttons at the bottom right -->
+        <div class="btn-container">
+          <button class="btn btn-edit" [routerLink]="['/front-office/edit-offer', offer.id]">
+            <i class="fas fa-edit"></i> Edit
+          </button>
+          <button class="btn btn-delete" (click)="deleteOffer(offer.id)">
+            <i class="fas fa-trash"></i> Delete
+          </button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Add new offer button -->
+  <!-- Pagination Controls -->
+  <div *ngIf="totalOffers > 0" class="d-flex justify-content-center mt-4">
+    <button class="btn btn-outline-primary" (click)="changePage(page - 1)" [disabled]="page === 1">
+      <i class="fas fa-arrow-left"></i> Previous
+    </button>
+    <span class="mx-3">Page {{ page }} of {{ totalPages }}</span>
+    <button class="btn btn-outline-primary" (click)="changePage(page + 1)" [disabled]="page === totalPages">
+      Next <i class="fas fa-arrow-right"></i>
+    </button>
+  </div>
+
+  <!-- Add New Offer Button -->
   <div class="text-center mt-4">
     <button class="btn btn-primary btn-lg shadow" [routerLink]="['/front-office/add-offer']">
       <i class="fas fa-plus-circle"></i> Add New Offer

@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {OfferService} from "../../services/offer.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from "@angular/forms";
+import { OfferService } from "../../services/offer.service";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-offer-form',
@@ -20,13 +20,23 @@ export class OfferFormComponent implements OnInit {
     private router: Router
   ) {
     this.offerForm = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
-      image: ['', Validators.required],
+      title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+      description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(500)]],
+      image: ['', [Validators.required]],
       datePub: ['', Validators.required],
       dateExp: ['', Validators.required],
       category: ['', Validators.required]
-    });
+    }, { validators: this.dateValidator });
+  }
+
+  dateValidator(control: AbstractControl): ValidationErrors | null {
+    const datePub = new Date(control.get('datePub')?.value);
+    const dateExp = new Date(control.get('dateExp')?.value);
+
+    if (dateExp <= datePub) {
+      return { dateInvalid: true };
+    }
+    return null;
   }
 
   ngOnInit(): void {
@@ -39,7 +49,6 @@ export class OfferFormComponent implements OnInit {
       }
     });
   }
-
 
   loadOffer(id: number): void {
     this.offerService.getOfferbyId(id).subscribe(offer => {
@@ -56,8 +65,11 @@ export class OfferFormComponent implements OnInit {
     });
   }
 
-
   onSubmit(): void {
+    if (this.offerForm.invalid) {
+      return;
+    }
+
     if (this.isEditMode) {
       this.offerService.updateOffer(this.offerId!, this.offerForm.value).subscribe(() => {
         this.router.navigate(['/front-office/internships-offers']);
@@ -69,4 +81,3 @@ export class OfferFormComponent implements OnInit {
     }
   }
 }
-

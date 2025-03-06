@@ -12,7 +12,7 @@ export class CommentService {
   constructor(private http: HttpClient) {}
 
   getComments(): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`${this.apiUrl}/Get-All-Comments`);
+   return this.http.get<Comment[]>(`http://localhost:8011/piproj/Comment/retrieve-all-comments`);
   }
 
   getCommentById(id: number): Observable<Comment> {
@@ -20,19 +20,19 @@ export class CommentService {
   }
 
   addComment(comment: Comment): Observable<Comment> {
-    return this.http.post<Comment>(`${this.apiUrl}/Add-Comment`, comment);
+    return this.http.post<Comment>(`http://localhost:8011/piproj/Comment/Add-Comment`, comment);
   }
 
-  updateComment(comment: Comment): Observable<Comment> {
-    return this.http.put<Comment>(`${this.apiUrl}/Edit-Comment`, comment);
+  updateComment(commentId: number, newContent: string): Observable<Comment> {
+    return this.http.put<Comment>(`${this.apiUrl}update/${commentId}`, newContent);
   }
 
   deleteComment(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/Delete-Comment/${id}`);
+    return this.http.delete<void>(`http://localhost:8011/piproj/Comment/Delete-Comment/${id}`);
   }
 
   addCommentToOffer(offerId: number, content: string): Observable<Comment> {
-    // Append content as query parameter
+    // Make sure the backend API endpoint matches this format
     return this.http.put<Comment>(
       `http://localhost:8011/piproj/Comment/Add-Comment-Offer/${offerId}?content=${content}`,
       {}

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { OfferService } from '../../services/offer.service';
 import { CommentService } from '../../services/comment.service';
 import { Comment } from "../../models/comment";
+import { ChangeDetectorRef } from '@angular/core';  // Import ChangeDetectorRef
 
 @Component({
   selector: 'app-offer-details',
@@ -14,12 +15,14 @@ export class OfferDetailsComponent implements OnInit {
   comments: any[] = []; // To hold comments
   applications: any[] = [];
   newComment: string = ''; // New comment input
+  errorMessage: string = ''; // Error message for bad words
 
   constructor(
     private route: ActivatedRoute,
     private offerService: OfferService,
     private commentService: CommentService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef  // Inject ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -72,6 +75,13 @@ export class OfferDetailsComponent implements OnInit {
       return;
     }
 
+    // Check for bad words
+    if (this.containsBadWords(this.newComment)) {
+      this.errorMessage = 'Your comment contains inappropriate language. Please remove it.';
+      this.cdr.detectChanges();  // Ensure UI update
+      return; // Don't add comment if bad words found
+    }
+
     const comment: Comment = {
       content: this.newComment,
       creationDate: new Date(),
@@ -84,5 +94,43 @@ export class OfferDetailsComponent implements OnInit {
       this.newComment = ''; // Clear input field
       alert('Comment added successfully!');
     });
+  }
+
+  // Check if the text contains any bad words
+  containsBadWords(text: string): boolean {
+    const badWords = ["fuck", "shit", "idiot", "bad word"]; // Example list of bad words
+    for (let word of badWords) {
+      if (text.toLowerCase().includes(word)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  acceptApplication(applicationId: number): void {
+    this.offerService.acceptApplication(applicationId).subscribe(() => {
+      alert('Application accepted successfully!');
+      this.getApplications(this.offer.id); // Refresh the applications list
+    });
+  }
+
+  denyApplication(applicationId: number): void {
+    if (confirm('Are you sure you want to deny and delete this application?')) {
+      this.offerService.denyApplication(applicationId).subscribe(() => {
+        alert('Application denied and deleted!');
+        this.getApplications(this.offer.id); // Refresh the applications list
+      });
+    }
+  }
+
+  downloadOfferPdf(offerId: number): void {
+    const pdfUrl = `http://localhost:8011/piproj/offers/offers/${offerId}/pdf`;
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = `offer_${offerId}.pdf`;
+    link.target = '_blank'; // Open in new tab
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 }

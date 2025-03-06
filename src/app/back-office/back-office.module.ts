@@ -12,6 +12,12 @@ import { BackOfficeLayoutComponent } from './back-office-layout/back-office-layo
 import { OfferComponent } from './offer/offer.component';
 import { OfferFormComponent } from './offer-form/offer-form.component';
 import { OfferDetailsComponent } from './offer-details/offer-details.component';
+import { CommentComponent } from './comment/comment.component';
+import { CommentFormComponent } from './comment-form/comment-form.component';
+import { ApplicationFormComponent } from './application-form/application-form.component';
+import { EditApplicationComponent } from './edit-application/edit-application.component';
+import { ApplicationComponent } from './application/application.component';
+import { OfferStatComponent } from './offer-stat/offer-stat.component';
 
 
 @NgModule({
@@ -24,7 +30,12 @@ import { OfferDetailsComponent } from './offer-details/offer-details.component';
     BackOfficeLayoutComponent,
     OfferComponent,
     OfferFormComponent,
-    OfferDetailsComponent
+    OfferDetailsComponent,
+    CommentComponent,
+    CommentFormComponent,
+    ApplicationFormComponent,
+    EditApplicationComponent,
+    OfferStatComponent,
   ],
   imports: [
     CommonModule,
