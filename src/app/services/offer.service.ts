@@ -43,6 +43,7 @@ export class OfferService {
   searchOffers(title: string): Observable<any> {
     return this.http.get<any>(`http://localhost:8011/piproj/offers/search?title=${title}`)
   }
+  //mailing
   acceptApplication(applicationId: number): Observable<any> {
     return this.http.put<any>(`http://localhost:8011/piproj/offers/accept/${applicationId}`, {});
   }
