@@ -39,6 +39,7 @@ export class OfferService {
   getApplicationsByOfferId(id: number): Observable<any[]> {
     return this.http.get<any[]>(`http://localhost:8011/piproj/offers/GetAppById/${id}`);
   }
+  //search
   searchOffers(title: string): Observable<any> {
     return this.http.get<any>(`http://localhost:8011/piproj/offers/search?title=${title}`)
   }
