@@ -122,7 +122,7 @@ export class OfferDetailsComponent implements OnInit {
       });
     }
   }
-
+//add pdf
   downloadOfferPdf(offerId: number): void {
     const pdfUrl = `http://localhost:8011/piproj/offers/offers/${offerId}/pdf`;
     const link = document.createElement('a');
