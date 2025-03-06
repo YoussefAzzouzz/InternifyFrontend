@@ -11,21 +11,37 @@
     </div>
 
     <div class="dashboard-card">
-      <h3>Active Demands</h3>
-      <p class="stats">325</p>
-      <i class="fas fa-clipboard-list"></i>
+      <h2>Demand Statistics</h2>
+      <div *ngIf="statistics">
+        <p>Demands by Field: {{ statistics.demandsByField }}</p>
+        <p>Demands by Status: {{ statistics.demandsByStatus }}</p>
+      </div>
+      <div *ngIf="!statistics">
+        <p>Loading statistics...</p>
+      </div>
+      <div class="input-group">
+        <select [(ngModel)]="field" class="form-select">
+          <option value="" disabled selected>Select Field</option>
+          <option value="IT">IT</option>
+          <option value="Marketing">Marketing</option>
+          <option value="HR">HR</option>
+          <option value="Finance">Finance</option>
+        </select>
+        <select [(ngModel)]="status" class="form-select">
+          <option value="" disabled selected>Select Status</option>
+          <option value="Pending">Pending</option>
+          <option value="Approved">Approved</option>
+          <option value="Rejected">Rejected</option>
+        </select>
+        <button (click)="updateStatistics(field, status)" class="btn-update">Update Statistics</button>
+      </div>
     </div>
-
     <div class="dashboard-card">
-      <h3>Approved Demands</h3>
-      <p class="stats">210</p>
-      <i class="fas fa-check-circle"></i>
-    </div>
-
-    <div class="dashboard-card">
-      <h3>Pending Demands</h3>
-      <p class="stats">50</p>
-      <i class="fas fa-hourglass-half"></i>
+      <h3>Total Demands</h3>
+      <div *ngIf="statistics">
+      <p class="stats">{{ statistics.totalDemands }}</p>
+      <i class="fas fa-file"></i>
+      </div>
     </div>
   </div>
 
@@ -33,7 +49,6 @@
     <div class="chart-card">
       <h3>Demand Status Chart</h3>
       <div class="chart-container">
-        <!-- Chart here (you can integrate a charting library like Chart.js) -->
         <p>Chart will be placed here.</p>
       </div>
     </div>
@@ -41,7 +56,6 @@
     <div class="chart-card">
       <h3>Users by Role</h3>
       <div class="chart-container">
-        <!-- Another chart can go here -->
         <p>Chart will be placed here.</p>
       </div>
     </div>

@@ -6,6 +6,7 @@ import { DemandComponent } from './demand/demand.component';
 import { DemandFormComponent } from './demand-form/demand-form.component';
 import { DemandDetailsComponent } from './demand-details/demand-details.component';
 import {ResponseFormComponent} from "./response-form/response-form.component";
+import {NotificationsComponent} from "./notifications/notifications.component";
 
 const routes: Routes = [
   {
@@ -15,7 +16,9 @@ const routes: Routes = [
       { path: 'add', component: DemandFormComponent },
       { path: 'edit/:id', component: DemandFormComponent },
       { path: 'details/:id', component: DemandDetailsComponent },
-      { path: 'response/:id', component: ResponseFormComponent }
+      { path: 'response/:id', component: ResponseFormComponent },
+      { path: 'notifications', component: NotificationsComponent }
+
     ]
   }
 ];

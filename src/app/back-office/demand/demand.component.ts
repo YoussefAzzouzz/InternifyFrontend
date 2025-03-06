@@ -78,6 +78,8 @@ export class DemandComponent implements OnInit {
 
 
 // Sort demands by date
+  currentPage = 1; // Default page
+  itemsPerPage = 2; // Items per page
   sortDemands() {
     if (this.sortOrder === 'asc') {
       this.demands.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());

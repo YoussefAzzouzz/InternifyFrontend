@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {DemandService, StatisticsResponse} from "../../services/demand.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -11,44 +12,49 @@ export class DashboardComponent implements OnInit {
   statuses: string[] = ['Pending', 'Approved', 'Rejected']; // Example statuses
   selectedField: string = '';
   selectedStatus: string = '';
+  statistics: StatisticsResponse | null = null;
 
-  statistics = {
-    activeDemands: 0,
-    approvedDemands: 0,
-    pendingDemands: 0,
-  };
+  field: string | null = null;
+
+  status: string | null = null;
 
 
   chartLabels: string[] = ['Active', 'Approved', 'Pending'];
   chartData: number[] = [0, 0, 0];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private demandService: DemandService) {}
 
   ngOnInit(): void {
     this.fetchStatistics();
   }
 
   fetchStatistics(): void {
-    let params: any = {};
-    if (this.selectedField) params.field = this.selectedField;
-    if (this.selectedStatus) params.status = this.selectedStatus;
 
-    this.http.get<any>('http://localhost:8089/internshipDemands/api/demands/statistics', { params })
-      .subscribe(response => {
-        this.statistics = {
-          activeDemands: response.activeDemands || 0,
-          approvedDemands: response.approvedDemands || 0,
-          pendingDemands: response.pendingDemands || 0
-        };
+    this.demandService.getDemandStatistics(this.field, this.status).subscribe(
 
-        // Update chart data
-        this.chartData = [
-          this.statistics.activeDemands,
-          this.statistics.approvedDemands,
-          this.statistics.pendingDemands
-        ];
-      }, error => {
-        console.error('Error fetching statistics:', error);
-      });
+      (data) => {
+
+        this.statistics = data;
+
+      },
+
+      (error) => {
+
+        console.error('Error fetching statistics', error);
+
+      }
+
+    );
+
+  }
+
+  updateStatistics(field: string | null, status: string | null): void {
+
+    this.field = field;
+
+    this.status = status;
+
+    this.fetchStatistics();
+
   }
 }

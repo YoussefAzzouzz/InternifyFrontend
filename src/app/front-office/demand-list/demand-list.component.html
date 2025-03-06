@@ -1,14 +1,9 @@
 <div class="search-container">
-  <!-- Field Selection Dropdown -->
   <select [(ngModel)]="selectedField" (change)="searchDemands()" class="search-dropdown">
     <option value="" disabled selected>Select Field</option>
-    <option value="IT">IT</option>
-    <option value="Marketing">Marketing</option>
-    <option value="HR">HR</option>
-    <option value="Finance">Finance</option>
+    <option *ngFor="let field of fields" [value]="field">{{ field }}</option>
   </select>
 
-  <!-- Sorting Dropdown -->
   <select [(ngModel)]="sortOrder" (change)="sortDemands()" class="search-dropdown sort">
     <option value="" disabled selected>Sort by Date</option>
     <option value="desc">Most Recent</option>
@@ -19,6 +14,9 @@
 </div>
 
 <h2 class="demand-list-title">Demand List</h2>
+
+<div id="map" style="height: 500px;"></div>
+
 <ul class="demand-list">
   <li *ngFor="let demand of demands | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }" class="demand-item">
     <div class="demand-info">
@@ -29,20 +27,17 @@
       <p class="demand-status"><strong>Status:</strong> {{ demand.status }}</p>
     </div>
     <div class="demand-actions">
-      <button class="btn btn-view" [routerLink]="['/back-office/details', demand.id]">View Details</button>
-      <button class="btn btn-edit" [routerLink]="['/back-office/edit', demand.id]">Edit</button>
+      <button class="btn btn-view" [routerLink]="['/front-office/details', demand.id]">View Details</button>
+      <button class="btn btn-edit" [routerLink]="['/front-office/edit', demand.id]">Edit</button>
       <button class="btn btn-delete" (click)="deleteDemand(demand.id)">Delete</button>
-      <button class="btn btn-respond" [routerLink]="['/back-office/response', demand.id]">Respond</button>
+      <button class="btn btn-respond" [routerLink]="['/front-office/response', demand.id]">Respond</button>
     </div>
   </li>
 </ul>
 
-<!-- Pagination Controls -->
-<!-- Pagination Controls -->
 <pagination-controls
   class="pagination-controls"
   (pageChange)="currentPage = $event">
 </pagination-controls>
 
-
-<button class="btn btn-add" [routerLink]="['/back-office/add']">Add New Demand</button>
+<button class="btn btn-add" [routerLink]="['/front-office/add']">Add New Demand</button>

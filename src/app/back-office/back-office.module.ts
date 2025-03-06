@@ -10,6 +10,8 @@ import { DemandFormComponent } from './demand-form/demand-form.component';
 import { DemandDetailsComponent } from './demand-details/demand-details.component';
 import { BackOfficeLayoutComponent } from './back-office-layout/back-office-layout.component';
 import { ResponseFormComponent } from './response-form/response-form.component';
+import {NgxPaginationModule} from "ngx-pagination";
+import { NotificationsComponent } from './notifications/notifications.component';
 
 
 @NgModule({
@@ -20,13 +22,15 @@ import { ResponseFormComponent } from './response-form/response-form.component';
     DemandFormComponent,
     DemandDetailsComponent,
     BackOfficeLayoutComponent,
-    ResponseFormComponent
+    ResponseFormComponent,
+    NotificationsComponent
   ],
     imports: [
         CommonModule,
         BackOfficeRoutingModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        NgxPaginationModule
     ]
 })
 export class BackOfficeModule { }

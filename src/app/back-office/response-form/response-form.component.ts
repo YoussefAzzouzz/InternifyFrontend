@@ -34,9 +34,15 @@ export class ResponseFormComponent implements OnInit {
   submitResponse() {
     if (this.responseForm.valid) {
       const responseData = this.responseForm.value;
-      console.log('Form Data:', responseData);  // Log the data to check
+      console.log('Form Data:', responseData);
+
       this.responseService.addResponse(this.demandId, responseData.comment, responseData.status).subscribe(() => {
-        this.router.navigate(['/back-office/demand']);
+        const currentUrl = this.router.url;  // Get current route
+        if (currentUrl.includes('/front-office')) {
+          this.router.navigate(['/front-office/demand']);  // Navigate to front-office
+        } else {
+          this.router.navigate(['/back-office/demand']);  // Navigate to back-office
+        }
       });
     }
   }
