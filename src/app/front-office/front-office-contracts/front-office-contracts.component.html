@@ -1,20 +1,3 @@
-<nav class="navbar">
-  <div class="navbar-left">
-    <div class="navbar-logo">
-      <img src="assets/images/logo.png" alt="Logo" class="logo">
-    </div>
-    <span class="app-name">Internify</span> <!-- Added app name -->
-  </div>
-  <div class="navbar-right">
-    <a routerLink="/login" class="nav-link">Login</a>
-    <a routerLink="/signup" class="nav-link">Sign Up</a>
-    <a routerLink="/internships-offers" class="nav-link">Internships Offers</a>
-    <a routerLink="/internships-demands" class="nav-link">Internships Demands</a>
-    <a routerLink="/view" class="nav-link">Documents</a>
-    <a routerLink="/chat" class="nav-link">Chat</a>
-  </div>
-</nav>
-
 
 <div class="contract-container">
   <div class="card shadow-lg p-5">
@@ -41,7 +24,7 @@
               </span>
           </td>
           <td>
-            <button class="btn update-btn" [routerLink]="['/update-contract', contract.id]">
+            <button class="btn update-btn" [routerLink]="['/front-office/update-contract', contract.id]">
               Update
             </button>
 
