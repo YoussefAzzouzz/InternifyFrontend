@@ -5,7 +5,7 @@
     <input type="email" [(ngModel)]="userEmail" placeholder="Enter user email" />
   </div>
 
-  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div> <!-- Error message display -->
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 
   <div class="button-container">
     <button (click)="searchUserAllMessages()">All Message Statistics</button>
@@ -23,19 +23,19 @@
   <div class="types-container">
     <div class="stat">
       <div class="stat-label">Images</div>
-      <div class="stat-value">{{ totalStats.IMAGE || 0 }}</div> <!-- Display 0 if null -->
+      <div class="stat-value">{{ totalStats.IMAGE || 0 }}</div>
     </div>
     <div class="stat">
       <div class="stat-label">PDFs</div>
-      <div class="stat-value">{{ totalStats.PDF || 0 }}</div> <!-- Display 0 if null -->
+      <div class="stat-value">{{ totalStats.PDF || 0 }}</div>
     </div>
     <div class="stat">
       <div class="stat-label">Texts</div>
-      <div class="stat-value">{{ totalStats.TEXT || 0 }}</div> <!-- Display 0 if null -->
+      <div class="stat-value">{{ totalStats.TEXT || 0 }}</div>
     </div>
     <div class="stat">
       <div class="stat-label">Audios</div>
-      <div class="stat-value">{{ totalStats.AUDIO || 0 }}</div> <!-- Display 0 if null -->
+      <div class="stat-value">{{ totalStats.AUDIO || 0 }}</div>
     </div>
   </div>
 </div>

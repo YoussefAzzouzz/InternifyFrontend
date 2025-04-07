@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService } from '../../services/message.service'; // Adjust the path as necessary
-import { UserService } from '../../services/user.service'; // Import UserService
+import { MessageService } from '../../services/message.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-message-stats',
@@ -30,7 +30,6 @@ export class MessageStatsComponent implements OnInit {
   }
 
   fetchMessageStats(userId: number) {
-    // Fetch total message stats
     this.messageService.getMessageStats(userId).subscribe(stats => {
       this.totalStats = stats;
     }, error => {
@@ -40,8 +39,8 @@ export class MessageStatsComponent implements OnInit {
 
   searchUserAllMessages() {
     if (!this.userEmail) {
-      this.errorMessage = 'Please enter an email address.'; // Set error message
-      return; // Exit the function if the input is empty
+      this.errorMessage = 'Please enter an email address.';
+      return;
     }
     if (!this.emailPattern.test(this.userEmail)) {
       this.errorMessage = 'Please enter a valid email address.';
@@ -49,7 +48,6 @@ export class MessageStatsComponent implements OnInit {
     }
     this.errorMessage = '';
 
-    // First, get the user by email
     this.userService.getUserByEmail(this.userEmail).subscribe(user => {
         this.fetchMessageStats(user.id);
     }, error => {
@@ -58,7 +56,6 @@ export class MessageStatsComponent implements OnInit {
   }
 
   fetchSentMessageStats(userId: number) {
-    // Fetch total message stats
     this.messageService.getSentMessageStats(userId).subscribe(stats => {
       this.totalStats = stats;
     }, error => {
@@ -68,8 +65,8 @@ export class MessageStatsComponent implements OnInit {
 
   searchUserSentMessages() {
     if (!this.userEmail) {
-      this.errorMessage = 'Please enter an email address.'; // Set error message
-      return; // Exit the function if the input is empty
+      this.errorMessage = 'Please enter an email address.';
+      return;
     }
     if (!this.emailPattern.test(this.userEmail)) {
       this.errorMessage = 'Please enter a valid email address.';
@@ -77,9 +74,7 @@ export class MessageStatsComponent implements OnInit {
     }
     this.errorMessage = '';
 
-    // First, get the user by email
     this.userService.getUserByEmail(this.userEmail).subscribe(user => {
-        // If user is found, fetch message statistics using user ID
         this.fetchSentMessageStats(user.id);
     }, error => {
       this.errorMessage = 'User  not found.';
@@ -87,7 +82,6 @@ export class MessageStatsComponent implements OnInit {
   }
 
   fetchReceivedMessageStats(userId: number) {
-    // Fetch total message stats
     this.messageService.getReceivedMessageStats(userId).subscribe(stats => {
       this.totalStats = stats;
     }, error => {
@@ -97,8 +91,8 @@ export class MessageStatsComponent implements OnInit {
 
   searchUserReceivedMessages() {
     if (!this.userEmail) {
-      this.errorMessage = 'Please enter an email address.'; // Set error message
-      return; // Exit the function if the input is empty
+      this.errorMessage = 'Please enter an email address.';
+      return;
     }
     if (!this.emailPattern.test(this.userEmail)) {
       this.errorMessage = 'Please enter a valid email address.';
@@ -106,7 +100,6 @@ export class MessageStatsComponent implements OnInit {
     }
     this.errorMessage = '';
 
-    // First, get the user by email
     this.userService.getUserByEmail(this.userEmail).subscribe(user => {
         this.fetchReceivedMessageStats(user.id);
     }, error => {

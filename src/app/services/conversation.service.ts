@@ -8,7 +8,7 @@ import { Message } from '../models/message.model';
   providedIn: 'root'
 })
 export class ConversationService {
-  private baseUrl = 'http://localhost:8089/internify/conversations'; // Remplacez par votre URL
+  private baseUrl = 'http://localhost:8089/internify/conversations';
 
   constructor(private http: HttpClient) { }
 

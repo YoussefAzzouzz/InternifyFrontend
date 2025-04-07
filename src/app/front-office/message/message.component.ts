@@ -17,11 +17,11 @@ export class MessageComponent implements OnInit {
   messages: Message[] = [];
   conversationId!: number;
   userId!: number;
-  conversation!: Conversation; // Propriété pour stocker la conversation
+  conversation!: Conversation;
   errorMessage: string = '';
   connectedUser !: User;
   newMessageContent: string = '';
-  editingMessageId: number | null = null; // ID du message en cours d'édition
+  editingMessageId: number | null = null;
   editedMessageContent: string = '';
   selectedFile: File | null = null;
   mediaRecorder: MediaRecorder | null = null;
@@ -40,55 +40,48 @@ export class MessageComponent implements OnInit {
     this.userId = +this.route.snapshot.paramMap.get('idUser')!;
     this.conversationId = +this.route.snapshot.paramMap.get('idConversation')!;
     this.loadConnectedUser();
-    this.loadConversation(); // Charger la conversation
+    this.loadConversation();
     this.loadMessages();
 
     this.webSocketService.getMessageUpdates().subscribe((message: any) => {
       if (message.action === 'pinned' || message.action === 'unpinned') {
-        const updatedMessage = message.message; // Get the updated message
+        const updatedMessage = message.message;
         const index = this.messages.findIndex(m => m.id === updatedMessage.id);
         if (index !== -1) {
-          this.messages[index].isPinned = updatedMessage.isPinned; // Update the pinned status
+          this.messages[index].isPinned = updatedMessage.isPinned;
         } else {
-          this.messages.push(updatedMessage); // Add the message if it doesn't exist
+          this.messages.push(updatedMessage);
         }
       }
-      // Vérifier si le message a un ID, ce qui signifie qu'il s'agit d'un message ajouté
       if (message.id) {
-        // Vérifier si le message appartient à la conversation actuelle
         if (message.conversation.id === this.conversationId) {
-          this.messages.push(message); // Ajouter le message à la liste
+          this.messages.push(message);
         }
       }
-      // Vérifier si l'action est une mise à jour
       else if (message.action === 'updated') {
-        const updatedMessage = message.message; // Récupérer le message mis à jour
-        // Vérifier si le message mis à jour appartient à la conversation actuelle
+        const updatedMessage = message.message;
         if (updatedMessage.conversation.id === this.conversationId) {
           const index = this.messages.findIndex(m => m.id === updatedMessage.id);
           if (index !== -1) {
-            this.messages[index] = updatedMessage; // Mettre à jour le message existant
+            this.messages[index] = updatedMessage;
           } else {
-            this.messages.push(updatedMessage); // Ajouter le message s'il n'existe pas
+            this.messages.push(updatedMessage);
           }
         }
       }
-      // Vérifier si l'action est une suppression
       else if (message.action === 'deleted') {
-        const deletedMessage = message.message; // Récupérer l'ID du message à supprimer
+        const deletedMessage = message.message;
         if (deletedMessage.conversation.id === this.conversationId) {
-          // Marquer le message comme supprimé
           const index = this.messages.findIndex(m => m.id === deletedMessage.id);
           if (index !== -1) {
-            this.messages[index] = deletedMessage; // Marquer comme supprimé
+            this.messages[index] = deletedMessage;
           } else {
-            this.messages.push(deletedMessage); // Ajouter le message s'il n'existe pas
+            this.messages.push(deletedMessage);
           }
         }
       }
 
-      // Recharger les messages après modification (peut ne pas être nécessaire)
-      this.loadMessages(); // Cela peut être redondant si vous gérez déjà les messages en temps réel
+      this.loadMessages();
     });
   }
 
@@ -101,7 +94,7 @@ export class MessageComponent implements OnInit {
   loadConversation() {
     this.conversationService.getConversationById(this.conversationId).subscribe({
       next: (conversation) => {
-        this.conversation = conversation; // Stocker la conversation récupérée
+        this.conversation = conversation;
       },
       error: (err) => {
         console.error('Erreur lors de la récupération de la conversation:', err);
@@ -124,8 +117,8 @@ export class MessageComponent implements OnInit {
     this.errorMessage = '';
 
     if (!this.newMessageContent.trim()) {
-      this.errorMessage = 'The message cannot be empty.'; // Définir le message d'erreur
-      return; // Ne pas envoyer le message
+      this.errorMessage = 'The message cannot be empty.';
+      return;
     }
 
     const newMessage: Message = {
@@ -139,10 +132,9 @@ export class MessageComponent implements OnInit {
       isPinned: false,
       readAt: null,
       attachmentUrl: null,
-      conversation: this.conversation // Utiliser l'objet conversation récupéré
+      conversation: this.conversation
     };
 
-    // Envoyer le message via le service MessageService
     this.messageService.sendMessage(newMessage).subscribe({
       next: () => {
         this.loadMessages();
@@ -156,26 +148,26 @@ export class MessageComponent implements OnInit {
 
   deleteMessage(id: number) {
     this.messageService.deleteMessage(id).subscribe(() => {
-      this.loadMessages(); // Recharger les messages après la suppression
+      this.loadMessages();
     });
   }
 
   startEditing(message: Message) {
-    this.editingMessageId = message.id; // Définir l'ID du message à modifier
-    this.editedMessageContent = message.content; // Charger le contenu du message
+    this.editingMessageId = message.id;
+    this.editedMessageContent = message.content;
   }
 
   submitEdit() {
     this.errorMessage = '';
     if (!this.editedMessageContent.trim()) {
-      this.errorMessage = 'The message cannot be empty.'; // Définir le message d'erreur
-      return; // Ne pas envoyer le message
+      this.errorMessage = 'The message cannot be empty.';
+      return;
     }
     if (this.editingMessageId !== null) {
       this.messageService.updateMessage(this.editingMessageId,this.editedMessageContent).subscribe({
         next: () => {
-          this.loadMessages(); // Recharger les messages après la mise à jour
-          this.cancelEdit(); // Annuler l'édition
+          this.loadMessages();
+          this.cancelEdit();
         },
         error: (err) => {
           console.error('Erreur lors de la mise à jour du message:', err);
@@ -185,20 +177,17 @@ export class MessageComponent implements OnInit {
   }
 
   cancelEdit() {
-    this.editingMessageId = null; // Réinitialiser l'ID d'édition
-    this.editedMessageContent = ''; // Réinitialiser le contenu
+    this.editingMessageId = null;
+    this.editedMessageContent = '';
   }
 
   updateMessageStatusToRead() {
-    // Call the backend service to update the status of all messages in the conversation to "READ"
     this.messages.forEach(message => {
-      // Check if the message is SENT and if the current user is the receiver
       if (message.status === 'SENT' && message.receiver.id === this.userId) {
         this.messageService.updateMessageStatusToRead(message.id).subscribe({
           next: () => {
-            // Update the local message status
             message.status = 'READ';
-            message.readAt = new Date(); // Set the read timestamp
+            message.readAt = new Date();
           },
           error: (err) => {
             console.error('Error updating message status:', err);
@@ -209,22 +198,20 @@ export class MessageComponent implements OnInit {
   }
 
   onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0]; // Get the selected file
+    this.selectedFile = event.target.files[0];
   }
 
   uploadMessage() {
-    this.errorMessage = ''; // Reset any previous error message
+    this.errorMessage = '';
 
-    // Check if a file is selected
     if (this.selectedFile) {
-      // Validate the file type
       const validImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
       const validPdfType = 'application/pdf';
 
       if (!validImageTypes.includes(this.selectedFile.type) && this.selectedFile.type !== validPdfType) {
         this.errorMessage = 'Please upload a valid image file (JPEG, PNG, GIF) or a PDF file.';
-        this.selectedFile = null; // Reset the selected file
-        return; // Exit the function if the file is not valid
+        this.selectedFile = null;
+        return;
       }
 
       const newMessage: Message = {
@@ -240,27 +227,24 @@ export class MessageComponent implements OnInit {
         attachmentUrl: null,
       };
 
-      // Send the message with the attachment
       this.messageService.sendMessageWithAttachment(newMessage, this.selectedFile, this.conversationId).subscribe({
         next: (response) => {
-          this.messages.push(response); // Add the new message to the messages array
-          this.selectedFile = null; // Reset the selected file
+          this.messages.push(response);
+          this.selectedFile = null;
         },
         error: (err) => {
           console.error('Error sending message:', err);
-          this.errorMessage = 'Failed to send message. Please try again.'; // Set the error message
+          this.errorMessage = 'Failed to send message. Please try again.';
         }
       });
     } else {
-      this.errorMessage = 'Select a file first.'; // Set error if no file is selected
+      this.errorMessage = 'Select a file first.';
     }
   }
 
   uploadAudio(audioBlob: Blob) {
-    const formData = new FormData();
-
-    const timestamp = new Date().getTime(); // Get the current timestamp
-    const audioFileName = `voice-message-${timestamp}.wav`; // Create a unique file name
+    const timestamp = new Date().getTime();
+    const audioFileName = `voice-message-${timestamp}.wav`;
     const audioFile = new File([audioBlob], audioFileName, { type: 'audio/wav' });
 
     const newMessage: Message = {
@@ -276,14 +260,13 @@ export class MessageComponent implements OnInit {
       attachmentUrl: null,
     };
 
-    // Send the message with the audio attachment
     this.messageService.sendMessageWithAttachment(newMessage, audioFile, this.conversationId).subscribe({
       next: (response) => {
-        this.messages.push(response); // Add the new message to the messages array
+        this.messages.push(response);
       },
       error: (err) => {
         console.error('Error sending message:', err);
-        this.errorMessage = 'Failed to send message. Please try again.'; // Set the error message
+        this.errorMessage = 'Failed to send message. Please try again.';
       }
     });
   }
@@ -326,7 +309,6 @@ export class MessageComponent implements OnInit {
       next: () => {
         message.isPinned = !message.isPinned;
 
-        // Emit the updated message through the public method
         this.webSocketService.emitMessageUpdate({
           action: message.isPinned ? 'pinned' : 'unpinned',
           message: message

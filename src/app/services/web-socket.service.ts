@@ -16,13 +16,13 @@ export class WebSocketService {
   }
 
   connect() {
-    const socket = new SockJS('http://localhost:8089/internify/ws'); // Remplacez par votre URL
+    const socket = new SockJS('http://localhost:8089/internify/ws');
     this.stompClient = Stomp.over(() => new SockJS('http://localhost:8089/internify/ws'));
     this.stompClient.connect({}, (frame: any) => {
       this.stompClient.subscribe('/topic/conversations', (message: any) => {
         this.messagesSubject.next(JSON.parse(message.body));
       });
-      this.stompClient.subscribe('/topic/messages', (message: any) => { // Souscription pour les messages
+      this.stompClient.subscribe('/topic/messages', (message: any) => {
         this.messageUpdatesSubject.next(JSON.parse(message.body));
       });
     });
@@ -33,7 +33,7 @@ export class WebSocketService {
   }
 
   getMessageUpdates() {
-    return this.messageUpdatesSubject.asObservable(); // Méthode pour obtenir les mises à jour de messages
+    return this.messageUpdatesSubject.asObservable();
   }
 
   emitMessageUpdate(message: any) {

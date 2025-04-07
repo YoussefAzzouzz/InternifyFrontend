@@ -2,13 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Message } from '../models/message.model';
-import {Conversation} from "../models/conversation.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
-  private baseUrl = 'http://localhost:8089/internify/messages'; // Remplacez par votre URL
+  private baseUrl = 'http://localhost:8089/internify/messages';
 
   constructor(private http: HttpClient) { }
 
@@ -24,8 +23,8 @@ export class MessageService {
     return this.http.put<Message>(`${this.baseUrl}/${id}`, newContent);
   }
 
-  deleteMessage(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  deleteMessage(id: number): Observable<Message> {
+    return this.http.put<Message>(`${this.baseUrl}/delete/${id}`,{});
   }
 
   updateMessageStatusToRead(messageId: number): Observable<Message> {
@@ -34,9 +33,9 @@ export class MessageService {
 
   sendMessageWithAttachment(message: Message, file: File, conversationId: number): Observable<Message> {
     const formData = new FormData();
-    formData.append('message', JSON.stringify(message)); // Convert message to JSON string
-    formData.append('conversationId', conversationId.toString()); // Append only the conversation ID
-    formData.append('file', file); // Append the file
+    formData.append('message', JSON.stringify(message));
+    formData.append('conversationId', conversationId.toString());
+    formData.append('file', file);
 
     return this.http.post<Message>(`${this.baseUrl}/send-with-attachment`, formData);
   }

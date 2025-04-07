@@ -6,8 +6,8 @@ export interface Message {
   content: string;
   messageType: string;
   timestamp?: Date;
-  sender: User; // Changement ici
-  receiver: User; // Changement ici
+  sender: User;
+  receiver: User;
   status: string;
   isTyping: boolean;
   isPinned: boolean;

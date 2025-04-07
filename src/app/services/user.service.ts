@@ -7,7 +7,7 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class UserService {
-  private baseUrl = 'http://localhost:8089/internify/users'; // Remplacez par votre URL
+  private baseUrl = 'http://localhost:8089/internify/users';
 
   constructor(private http: HttpClient) { }
 

@@ -1,255 +1,251 @@
 .message-container {
-  max-width: 600px; /* Maximum width of the container */
-  margin: 0 auto; /* Center the container */
-  padding: 20px; /* Internal spacing */
-  border: 1px solid #ccc; /* Border of the container */
-  border-radius: 8px; /* Rounded corners */
-  background-color: #f9f9f9; /* Background color */
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
 }
 
 .message-list {
-  list-style-type: none; /* Remove bullets */
-  padding: 0; /* Remove default padding */
-  max-height: 380px; /* Maximum height for the message list */
-  overflow-y: auto; /* Enable vertical scrolling */
+  list-style-type: none;
+  padding: 0;
+  max-height: 380px;
+  overflow-y: auto;
 }
 
 .sender-message {
-  background-color: #e0f7fa; /* Light blue background */
-  border: 1px solid #00796b; /* Dark green border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 10px; /* Internal spacing */
-  margin: 10px 0; /* Bottom margin */
-  text-align: right; /* Align text to the right */
-  display: flex; /* Use flexbox for alignment */
-  flex-direction: column; /* Stack children vertically */
-  align-items: flex-end; /* Align items to the end */
+  background-color: #e0f7fa;
+  border: 1px solid #00796b;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .no-messages {
-  text-align: center; /* Center the text */
-  color: #888; /* Light gray color */
-  margin: 20px 0; /* Margin for spacing */
+  text-align: center;
+  color: #888;
+  margin: 20px 0;
 }
 
 .receiver-message {
-  background-color: #c8e6c9; /* Light green background */
-  border: 1px solid #388e3c; /* Dark green border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 10px; /* Internal spacing */
-  margin: 10px 0; /* Bottom margin */
-  text-align: left; /* Align text to the left */
+  background-color: #c8e6c9;
+  border: 1px solid #388e3c;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: left;
 }
 
 .input-container {
-  display: flex; /* Use flexbox to align elements */
-  align-items: center; /* Center align items */
-  margin-top: 10px; /* Top margin */
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .new-message-input, .edit-input {
-  width: 100%; /* Take full available width */
-  height: 40px; /* Fixed height to match message areas */
-  padding: 10px; /* Internal padding */
-  border: 1px solid #ccc; /* Border */
-  border-radius: 5px; /* Rounded corners */
-  box-sizing: border-box; /* Include borders and padding in size */
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
 .button-container {
-  display: flex; /* Use flexbox to align buttons */
-  justify-content: flex-start; /* Align buttons to the left */
-  gap: 5px; /* Space between buttons */
-  margin-top: 10px; /* Top margin */
+  display: flex;
+  justify-content: flex-start;
+  gap: 5px;
+  margin-top: 10px;
 }
 
 .button {
-  background-color: #00796b; /* Button background color */
-  color: white; /* Button text color */
-  border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 5px 10px; /* Internal padding */
-  cursor: pointer; /* Pointer cursor */
+  background-color: #00796b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
 .button:hover {
-  background-color: #004d40; /* Background color on hover */
+  background-color: #004d40;
 }
 
 .send-button {
-  background-color: #388e3c; /* Background color for send button */
-  margin-left: 5px; /* Left margin */
+  background-color: #388e3c;
+  margin-left: 5px;
 }
 
 .send-button:hover {
-  background-color: #2e7d32; /* Background color on hover for send button */
+  background-color: #2e7d32;
 }
 
 h2 {
-  text-align: center; /* Center the title */
-  color: #00796b; /* Text color */
-  font-size: 24px; /* Font size */
-  margin-bottom: 20px; /* Bottom margin */
-  font-weight: bold; /* Bold text */
-  text-transform: uppercase; /* Uppercase text */
-  border-bottom: 2px solid #00796b; /* Bottom border */
-  padding-bottom: 10px; /* Padding below the border */
+  text-align: center;
+  color: #00796b;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 2px solid #00796b;
+  padding-bottom: 10px;
 }
 
 .deleted-message {
-  background-color: #ffebee; /* Light red background */
-  border: 1px solid #f44336; /* Dark red border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 10px; /* Internal spacing */
-  margin: 10px 0; /* Bottom margin */
-  color: #f44336; /* Dark red text color */
-  text-align: center; /* Center the text */
+  background-color: #ffebee;
+  border: 1px solid #f44336;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  color: #f44336;
+  text-align: center;
 }
 
 .error-message {
-  color: #dc3545; /* Red color for error message */
-  margin-top: 10px; /* Spacing above the message */
-  font-weight: bold; /* Bold text */
+  color: #dc3545;
+  margin-top: 10px;
+  font-weight: bold;
 }
 
 .message-status {
-  display: flex; /* Use flexbox for status and date */
-  justify-content: space-between; /* Space between status and date */
-  margin-top: 5px; /* Space above status */
-  font-size: 0.9em; /* Smaller font size for status */
-  color: #3d3d3d; /* Gray color for status text */
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  font-size: 0.9em;
+  color: #3d3d3d;
 }
 
 .file-upload-container {
-  margin-top: 10px; /* Top margin */
-  display: flex; /* Use flexbox for alignment */
-  align-items: center; /* Center align items */
-  justify-content: space-between; /* Space between elements */
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .file-upload-container input[type="file"] {
-  margin-right: 10px; /* Right margin for file input */
+  margin-right: 10px;
 }
 
 .message-image {
-  max-width: 490px; /* Increase the maximum width of the image */
-  max-height: 490px; /* Increase the maximum height of the image */
-  display: block; /* Make the image a block element */
-  margin: 0 auto; /* Center the image */
+  max-width: 490px;
+  max-height: 490px;
+  display: block;
+  margin: 0 auto;
 }
 
 .pdf-link {
-  display: inline-block; /* Allows centering */
-  margin: 10px 0; /* Space above and below the link */
-  padding: 8px 12px; /* Padding around the link */
-  background-color: #007bff; /* Bootstrap primary color */
-  color: white; /* Text color */
-  text-decoration: none; /* Remove underline */
-  border-radius: 5px; /* Rounded corners */
-  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  display: inline-block;
+  margin: 10px 0;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
 .pdf-link:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  background-color: #0056b3;
 }
 
 .pdf-container {
-  text-align: center; /* Center the content */
-  margin: 10px 0; /* Space above and below the container */
+  text-align: center;
+  margin: 10px 0;
 }
 
-/* Audio Player Styles */
 audio {
-  width: 100%; /* Full width for audio player */
-  margin-top: 5px; /* Space above the audio player */
-  border-radius: 5px; /* Rounded corners */
-  background-color: #f1f1f1; /* Light background for audio player */
-  border: 1px solid #ccc; /* Light border */
+  width: 100%;
+  margin-top: 5px;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
 }
 
-/* File Upload Container */
 .file-upload-container {
-  margin-top: 10px; /* Top margin */
-  display: flex; /* Use flexbox for alignment */
-  align-items: center; /* Center align items */
-  justify-content: space-between; /* Space between elements */
-  border: 1px solid #ccc; /* Light border around the container */
-  border-radius: 5px; /* Rounded corners */
-  padding: 10px; /* Internal padding */
-  background-color: #f9f9f9; /* Light background color */
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f9f9f9;
 }
 
 .file-upload-container input[type="file"] {
-  margin-right: 10px; /* Right margin for file input */
-  border: 1px solid #ccc; /* Light border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 5px; /* Internal padding */
-  width: 100%; /* Full width for file input */
-  box-sizing: border-box; /* Include padding and border in width */
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* File Upload Button */
 .file-upload-container .send-button {
-  background-color: #388e3c; /* Background color for send button */
-  color: white; /* Text color */
-  border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 5px 10px; /* Internal padding */
-  cursor: pointer; /* Pointer cursor */
-  transition: background-color 0.3s; /* Smooth transition */
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .file-upload-container .send-button:hover {
-  background-color: #2e7d32; /* Darker shade on hover */
+  background-color: #2e7d32;
 }
 
-/* Adjustments for the Input Fields */
 .new-message-input, .edit-input {
-  width: calc(100% - 120px); /* Adjust width to accommodate buttons */
-  height: 40px; /* Fixed height to match message areas */
-  padding: 10px; /* Internal padding */
-  border: 1px solid #ccc; /* Border */
-  border-radius: 5px; /* Rounded corners */
-  box-sizing: border-box; /* Include borders and padding in size */
-  transition: border-color 0.3s; /* Smooth transition for border color */
+  width: calc(100% - 120px);
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
 }
 
 .new-message-input:focus, .edit-input:focus {
-  border-color: #00796b; /* Change border color on focus */
-  outline: none; /* Remove default outline */
+  border-color: #00796b;
+  outline: none;
 }
 
 .pinned-messages {
-  background-color: #e0f7fa; /* Light blue background for pinned messages */
-  border: 1px solid #00796b; /* Dark green border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 10px; /* Internal padding */
-  margin-bottom: 10px; /* Space below the pinned messages */
+  background-color: #e0f7fa;
+  border: 1px solid #00796b;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 .pinned-message {
-  display: flex; /* Use flexbox for layout */
-  align-items: center; /* Center align items */
-  justify-content: space-between; /* Space between button and message */
-  margin: 5px 0; /* Space between pinned messages */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5px 0;
 }
 
 .pin-button {
-  background-color: #00796b; /* Button background color */
-  color: white; /* Button text color */
-  border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 5px 10px; /* Internal padding */
-  cursor: pointer; /* Pointer cursor */
-  transition: background-color 0.3s; /* Smooth transition */
+  background-color: #00796b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .pin-button:hover {
-  background-color: #004d40; /* Darker shade on hover */
+  background-color: #004d40;
 }
 
 .pinned-messages h3 {
-  font-size: 20px; /* Reduce the font size */
-  color: #004d40; /* Change the text color */
-  font-weight: bold; /* Make the text bold */
+  font-size: 20px;
+  color: #004d40;
+  font-weight: bold;
 }

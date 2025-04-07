@@ -2,7 +2,6 @@
 <div class="message-container">
   <h2>{{ conversation.users[0].id === userId ? conversation.users[1].username : conversation.users[0].username }}</h2>
 
-  <!-- Pinned Messages Section -->
   <div class="pinned-messages" *ngIf="hasPinnedMessages">
     <h3>Pinned Messages</h3>
     <ul class="message-list" style="max-height: 200px;">
@@ -13,7 +12,6 @@
           </button>
           <span *ngIf="!message.attachmentUrl && message.content !== 'Deleted message'">{{ message.content }}</span>
 
-          <!-- Display image attachment -->
           <a *ngIf="message.attachmentUrl && message.messageType=='IMAGE' && message.content !== 'Deleted message'" style="align-self: center"
              [href]="'http://localhost:8089/internify/messages/upload/' + message.attachmentUrl.split('/').pop()"
              download>
@@ -22,14 +20,12 @@
                  class="message-image" />
           </a>
 
-          <!-- Display PDF attachment -->
           <div *ngIf="message.attachmentUrl && message.messageType=='PDF' && message.content !== 'Deleted message'" class="pdf-container" style="align-self: center">
             <a class="pdf-link" [href]="'http://localhost:8089/internify/messages/upload/' + message.attachmentUrl.split('/').pop()" download>
               {{ message.attachmentUrl.split('/').pop() }} <!-- Display the file name -->
             </a>
           </div>
 
-          <!-- Display audio attachment -->
           <audio *ngIf="message.attachmentUrl && message.messageType === 'AUDIO' && message.content !== 'Deleted message'" controls>
             <source [src]="'http://localhost:8089/internify/messages/upload/' + message.attachmentUrl.split('/').pop()" type="audio/wav">
             Your browser does not support the audio element.
@@ -56,7 +52,6 @@
         <div *ngIf="message.sender.id === userId" class="sender-message">
           <span *ngIf="editingMessageId !== message.id && !message.attachmentUrl && message.content !== 'Deleted message'">{{ message.content }}</span>
 
-          <!-- Display image attachment -->
           <a *ngIf="message.attachmentUrl && message.messageType=='IMAGE' && message.content !== 'Deleted message'" style="align-self: center"
              [href]="'http://localhost:8089/internify/messages/upload/' + message.attachmentUrl.split('/').pop()"
              download>
@@ -65,14 +60,12 @@
                  class="message-image" />
           </a>
 
-          <!-- Display PDF attachment -->
           <div *ngIf="message.attachmentUrl && message.messageType=='PDF' && message.content !== 'Deleted message'" class="pdf-container" style="align-self: center">
             <a class="pdf-link" [href]="'http://localhost:8089/internify/messages/upload/' + message.attachmentUrl.split('/').pop()" download>
               {{ message.attachmentUrl.split('/').pop() }} <!-- Display the file name -->
             </a>
           </div>
 
-          <!-- Display audio attachment -->
           <audio *ngIf="message.attachmentUrl && message.messageType === 'AUDIO' && message.content !== 'Deleted message'" controls>
             <source [src]="'http://localhost:8089/internify/messages/upload/' + message.attachmentUrl.split('/').pop()" type="audio/wav">
             Your browser does not support the audio element.
@@ -102,7 +95,6 @@
         <div *ngIf="message.sender.id !== userId" class="receiver-message">
           <span *ngIf="editingMessageId !== message.id && !message.attachmentUrl && message.content !== 'Deleted message'">{{ message.content }}</span>
 
-          <!-- Display image attachment -->
           <a *ngIf="message.attachmentUrl && message.messageType=='IMAGE' && message.content !== 'Deleted message' "
              [href]="'http://localhost:8089/internify/messages/upload/' + message.attachmentUrl.split('/').pop()"
              download>
@@ -111,14 +103,12 @@
                  class="message-image" />
           </a>
 
-          <!-- Display PDF attachment -->
           <div *ngIf="message.attachmentUrl && message.messageType=='PDF' && message.content !== 'Deleted message'" class="pdf-container">
             <a class="pdf-link" [href]="'http://localhost:8089/internify/messages/upload/' + message.attachmentUrl.split('/').pop()" download>
               {{ message.attachmentUrl.split('/').pop() }} <!-- Display the file name -->
             </a>
           </div>
 
-          <!-- Display audio attachment -->
           <audio *ngIf="message.attachmentUrl && message.messageType === 'AUDIO' && message.content !== 'Deleted message'" controls>
             <source [src]="'http://localhost:8089/internify/messages/upload/' + message.attachmentUrl.split('/').pop()" type="audio/wav">
             Your browser does not support the audio element.
