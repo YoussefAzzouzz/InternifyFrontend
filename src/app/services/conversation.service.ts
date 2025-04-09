@@ -31,4 +31,8 @@ export class ConversationService {
   getConversationById(conversationId: number): Observable<Conversation> {
     return this.http.get<Conversation>(`${this.baseUrl}/${conversationId}`);
   }
+
+  toggleFavorite(conversationId: number, userId: number): Observable<Conversation> {
+    return this.http.put<Conversation>(`${this.baseUrl}/${conversationId}/favorite/${userId}`, {});
+  }
 }

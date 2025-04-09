@@ -159,3 +159,17 @@ h2 {
   margin-top: 10px;
   font-weight: bold;
 }
+
+.favorite-icon {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.favorite-icon i {
+  font-size: 1.5em; /* Adjust size as needed */
+  color: #FFD700; /* Gold color for favorite */
+}
+
+.favorite-icon i.far {
+  color: #ccc; /* Grey color for not favorite */
+}

@@ -93,7 +93,7 @@ export class ConversationComponent implements OnInit {
         const newConversation: Conversation = {
           id: 0,
           users: [user, this.connectedUser ],
-          isFavorite: false,
+          userFavorites: [],
           unreadMessagesCount: 0,
           notificationEnabled: true
         };
@@ -127,6 +127,23 @@ export class ConversationComponent implements OnInit {
 
   shouldShowPagination(): boolean {
     return this.conversations.length > this.itemsPerPage;
+  }
+
+  toggleFavorite(conversation: Conversation) {
+    this.conversationService.toggleFavorite(conversation.id, this.userId).subscribe(updatedConversation => {
+      // Update the local conversation list with the updated conversation
+      const index = this.conversations.findIndex(c => c.id === updatedConversation.id);
+      if (index !== -1) {
+        this.conversations[index] = updatedConversation;
+      }
+    });
+  }
+
+  isUserFavorite(conversation: Conversation, user:User): boolean {
+    for (const user of conversation.userFavorites)
+      if (user.id === this.connectedUser.id)
+        return true;
+  return false;
   }
 
   protected readonly Math = Math;

@@ -5,7 +5,7 @@ export interface Conversation {
   users: User[];
   createdAt?: Date;
   lastMessageTimestamp?: Date;
-  isFavorite: boolean;
+  userFavorites: User[];
   unreadMessagesCount: number;
   notificationEnabled: boolean;
 }
