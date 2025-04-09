@@ -10,6 +10,7 @@ import { FrontOfficeContractsComponent } from './front-office-contracts/front-of
 import { UpdateContractComponent } from './update-contract/update-contract.component';
 import { AddReportComponent } from './add-report/add-report.component';
 import { DocumentsComponent } from './documents/documents.component';
+import { ReportsComponent } from './reports/reports.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { DocumentsComponent } from './documents/documents.component';
     FrontOfficeContractsComponent,
     UpdateContractComponent,
     AddReportComponent,
-    DocumentsComponent
+    DocumentsComponent,
+    ReportsComponent
   ],
     imports: [
         CommonModule,

@@ -9,6 +9,33 @@
       <div class="contract-container">
         <div class="card shadow-lg p-5">
           <h2 class="contract-title">All Contracts</h2>
+
+          <!-- Search Filters Section -->
+          <div class="contract-search">
+            <div class="row justify-content-center">
+              <!-- Contract ID Filter -->
+              <div class="col-md-4 mb-3">
+                <label for="contractId">Contract ID</label>
+                <input type="number" class="form-control" id="contractId" [(ngModel)]="idFilter" />
+              </div>
+              <!-- Status Filter -->
+              <div class="col-md-4 mb-3">
+                <label for="status">Status</label>
+                <select class="form-control" id="status" [(ngModel)]="statusFilter">
+                  <option value="">-- Select Status --</option>
+                  <option value="PENDING">PENDING</option>
+                  <option value="SIGNED">SIGNED</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Search Button -->
+            <div class="d-flex justify-content-center mt-3">
+              <button class="btn btn-primary" (click)="applyFilters()">Search</button>
+            </div>
+          </div>
+
+          <!-- Contracts Table -->
           <div class="table-responsive">
             <table class="table table-bordered table-hover contract-table">
               <thead class="thead-dark">
@@ -25,9 +52,9 @@
                 <td>{{ contract.startDate | date }}</td>
                 <td>{{ contract.endDate | date }}</td>
                 <td>
-                <span class="badge" [ngClass]="getStatusClass(contract.status)">
-                  {{ contract.status }}
-                </span>
+                    <span class="badge" [ngClass]="getStatusClass(contract.status)">
+                      {{ contract.status }}
+                    </span>
                 </td>
               </tr>
               </tbody>

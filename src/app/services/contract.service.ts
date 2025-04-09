@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Contract } from '../models/contract';
 
@@ -23,6 +23,18 @@ export class ContractService {
     }
 
     return this.http.post(`${this.apiUrl}/create`, formData);
+  }
+
+  getFilteredContracts(id: number | null, status: string): Observable<any> {
+    let params = new HttpParams();
+    if (id !== null) {
+      params = params.append('id', id.toString());
+    }
+    if (status) {
+      params = params.append('status', status);
+    }
+
+    return this.http.get<any>(`${this.apiUrl}/search`, { params }); // Make GET request to the backend
   }
 
   getAllContracts(): Observable<any[]> {

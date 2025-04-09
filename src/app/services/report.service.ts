@@ -27,4 +27,10 @@ export class ReportService {
   getAllReports(): Observable<Report[]> {
     return this.http.get<Report[]>(`${this.apiUrl}/all`);
   }
+
+  getReportStats() {
+    return this.http.get<{ validated: number, notValidated: number }>(`${this.apiUrl}/stats`);
+  }
+
+
 }

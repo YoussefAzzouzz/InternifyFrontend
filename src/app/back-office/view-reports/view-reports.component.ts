@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportService, Report } from '../../services/report.service';
+import {Chart} from "chart.js";
 
 @Component({
   selector: 'app-view-reports',
@@ -8,6 +9,8 @@ import { ReportService, Report } from '../../services/report.service';
 })
 export class ViewReportsComponent implements OnInit {
   reports: Report[] = [];
+  chart: any;
+  reportStats = { validated: 0, notValidated: 0 };
   currentPage: number = 1; // Track current page
   itemsPerPage: number = 3; // Show only 3 rows per page
 
@@ -17,14 +20,49 @@ export class ViewReportsComponent implements OnInit {
     this.reportService.getAllReports().subscribe(
       data => {
         this.reports = data;
-        console.log(this.reports); // ✅ Debugging: Check if all 4 reports are loaded
       },
       error => console.error('Error fetching reports', error)
+    );
+
+    this.reportService.getReportStats().subscribe(
+      stats => {
+        this.reportStats = stats;
+        this.createChart();
+      },
+      error => console.error('Error fetching stats', error)
     );
   }
   pageChanged(event: any) {
     this.currentPage = event.page;
   }
+
+  createChart() {
+    if (this.chart) {
+      this.chart.destroy();
+    }
+
+    this.chart = new Chart("reportChart", {
+      type: 'bar',
+      data: {
+        labels: ['Validated', 'Not Validated'],
+        datasets: [{
+          label: 'Reports',
+          data: [this.reportStats.validated, this.reportStats.notValidated],
+          backgroundColor: ['#4CAF50', '#F44336'], // green and red
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
+
 
 
   getValidatedClass(isValidated: boolean): string {

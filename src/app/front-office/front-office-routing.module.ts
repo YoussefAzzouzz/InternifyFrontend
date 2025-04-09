@@ -9,6 +9,7 @@ import {AddReportComponent} from "./add-report/add-report.component";
 import {ViewReportsComponent} from "../back-office/view-reports/view-reports.component";
 import {DocumentsComponent} from "./documents/documents.component";
 import {FrontOfficeContractsComponent} from "./front-office-contracts/front-office-contracts.component";
+import {ReportsComponent} from "./reports/reports.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent, children:[
@@ -16,7 +17,9 @@ const routes: Routes = [
       { path: 'contracts', component: ContractListComponent },
       { path: 'update-contract/:id', component: UpdateContractComponent },
       { path: 'add-report', component: AddReportComponent },
-      { path: 'view-reports', component: ViewReportsComponent },
+
+      { path: 'view-reports', component: ReportsComponent },
+
       { path: 'view', component: DocumentsComponent },
       { path: 'contract', component: FrontOfficeContractsComponent }
     ] }

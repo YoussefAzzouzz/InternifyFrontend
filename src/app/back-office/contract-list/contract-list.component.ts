@@ -17,6 +17,9 @@ export class ContractListComponent implements OnInit {
   currentPage: number = 1;
   itemsPerPage: number = 3;
 
+  idFilter: number | null = null;
+  statusFilter: string = '';
+
   pageChanged(event: any): void {
     this.currentPage = event.page;
   }
@@ -74,6 +77,21 @@ export class ContractListComponent implements OnInit {
       default: return 'badge-secondary';
     }
   }
+
+  applyFilters() {
+    this.contractService.getFilteredContracts(this.idFilter, this.statusFilter)
+      .subscribe(
+        data => {
+          this.contracts = data;
+          this.currentPage = 1; // Reset pagination after applying filters
+        },
+        error => {
+          console.error('Error filtering contracts', error);
+        }
+      );
+  }
+
+
 
 
 
