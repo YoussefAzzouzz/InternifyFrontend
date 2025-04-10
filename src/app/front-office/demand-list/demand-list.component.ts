@@ -38,7 +38,14 @@ export class DemandListComponent implements OnInit {
 
     // Create a custom red icon for the current location marker
     const redIcon = L.icon({
-      iconUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/57/Paomedia_small-n-flat_map-marker.svg', // URL for red marker icon
+      iconUrl: 'https://www.svgrepo.com/show/362123/map-marker.svg', // URL for red marker icon
+      iconSize: [30, 45], // Size of the icon
+      iconAnchor: [12, 41], // Anchor point (bottom center of the icon)
+      popupAnchor: [1, -34], // Popup anchor offset
+      shadowSize: [41, 41], // Shadow size
+    });
+    const blackIcon = L.icon({
+      iconUrl: 'https://www.svgrepo.com/show/376955/map-marker.svg', // URL for red marker icon
       iconSize: [25, 41], // Size of the icon
       iconAnchor: [12, 41], // Anchor point (bottom center of the icon)
       popupAnchor: [1, -34], // Popup anchor offset
@@ -68,7 +75,7 @@ export class DemandListComponent implements OnInit {
 
     // Add markers for demands
     demands.forEach((demand) => {
-      L.marker([demand.latitude, demand.longitude])
+      L.marker([demand.latitude, demand.longitude],{ icon: blackIcon })
         .addTo(map)
         .bindPopup(`<b>${demand.title}</b><br>${demand.description}`);
     });

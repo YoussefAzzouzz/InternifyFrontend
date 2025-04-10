@@ -27,4 +27,10 @@ export class ResponseService {
   getResponsesByDemand(demandId: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/getResponses/${demandId}`);
   }
+  searchResponsesByComment(keyword: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/search`, {
+      params: { keyword }
+    });
+  }
+
 }
