@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Report {
@@ -31,6 +31,38 @@ export class ReportService {
   getReportStats() {
     return this.http.get<{ validated: number, notValidated: number }>(`${this.apiUrl}/stats`);
   }
+
+
+  downloadReport(reportId: number, language: string) {
+    const url = `${this.apiUrl}/api/download/${reportId}?language=${language}`;
+    return this.http.get(url, { responseType: 'blob' });
+  }
+
+  // Method to get the summary of a report
+  getSummarizedReport(reportId: number): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/${reportId}/summary`, {
+      responseType: 'blob',
+      headers: new HttpHeaders({
+        'Accept': 'application/pdf',
+      }),
+    });
+  }
+
+  // Search reports by ID and validatedByCompany status
+  searchReports(id: number | null, validatedByCompany: boolean | null): Observable<Report[]> {
+    let params = new HttpParams();
+
+    if (id !== null) {
+      params = params.set('id', id.toString());
+    }
+
+    if (validatedByCompany !== null) {
+      params = params.set('validatedByCompany', validatedByCompany.toString());
+    }
+
+    return this.http.get<Report[]>(`${this.apiUrl}/search`, { params });
+  }
+
 
 
 }
