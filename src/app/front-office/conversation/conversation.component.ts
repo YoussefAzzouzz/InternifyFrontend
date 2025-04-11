@@ -5,6 +5,8 @@ import { UserService } from '../../services/user.service';
 import { WebSocketService } from '../../services/web-socket.service';
 import { Conversation } from '../../models/conversation.model';
 import { User } from '../../models/user.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import {Message} from "../../models/message.model";
 
 @Component({
   selector: 'app-conversation',
@@ -25,7 +27,8 @@ export class ConversationComponent implements OnInit {
     private conversationService: ConversationService,
     private userService: UserService,
     private route: ActivatedRoute,
-    private webSocketService: WebSocketService
+    private webSocketService: WebSocketService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +44,12 @@ export class ConversationComponent implements OnInit {
         this.conversations = this.conversations.filter(c => c.id !== idToDelete);
       }
       this.loadConversations();
+    });
+
+    this.webSocketService.setUserId(this.userId);
+    this.webSocketService.getNotifications().subscribe((message: Message) => {
+      if (!this.isUserMuted(message.conversation!,this.connectedUser))
+        this.handleNewMessage(message); // Call the method to handle new messages
     });
   }
 
@@ -95,7 +104,7 @@ export class ConversationComponent implements OnInit {
           users: [user, this.connectedUser ],
           userFavorites: [],
           unreadMessagesCount: 0,
-          notificationEnabled: true
+          mutedBy: []
         };
 
         this.conversationService.createConversation(newConversation).subscribe(() => {
@@ -144,6 +153,33 @@ export class ConversationComponent implements OnInit {
       if (user.id === this.connectedUser.id)
         return true;
   return false;
+  }
+
+  handleNewMessage(message: Message) { // Specify the type as Message
+    this.snackBar.open('New message from ' + message.sender.username, '✖', { // Adjust according to your Message structure
+      duration: 3000,
+      verticalPosition: 'top', // Position at the top
+      panelClass: ['custom-snackbar']
+    });
+  }
+
+  toggleMute(conversation: Conversation) {
+    this.conversationService.toggleMute(conversation.id, this.userId).subscribe(updatedConversation => {
+      const index = this.conversations.findIndex(c => c.id === updatedConversation.id);
+      if (index !== -1) {
+        this.conversations[index] = updatedConversation; // Update the conversation in the list
+      }
+    }, error => {
+      console.error('Error toggling mute:', error);
+      // Optionally, show an error message to the user
+    });
+  }
+
+  isUserMuted(conversation: Conversation, user:User): boolean {
+    for (const user of conversation.mutedBy)
+      if (user.id === this.connectedUser.id)
+        return true;
+    return false;
   }
 
   protected readonly Math = Math;

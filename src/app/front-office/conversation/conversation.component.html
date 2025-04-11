@@ -18,6 +18,10 @@
       <div class="conversation-actions">
         <button class="open-button" [routerLink]="['/front-office/chat', userId, conversation.id, 'message']">Open</button>
         <button class="delete-button" (click)="deleteConversation(conversation.id)">Delete</button>
+        <button (click)="toggleMute(conversation)" class="mute-button">
+          {{ isUserMuted(conversation,connectedUser) ? 'Unmute' : 'Mute' }}
+        </button>
+        <button class="search-button" [routerLink]="['/front-office/chat', userId, conversation.id, 'search']">Search</button>
       </div>
     </li>
   </ul>

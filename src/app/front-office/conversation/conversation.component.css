@@ -67,7 +67,9 @@ h2 {
 
 .delete-button,
 .open-button,
-.create-button {
+.create-button,
+.mute-button,
+.search-button{
   border: none;
   border-radius: 5px;
   padding: 10px 15px;
@@ -101,6 +103,21 @@ h2 {
 
 .open-button:hover {
   background-color: #0056b3;
+}
+
+.search-button {
+  background-color: #17a2b8; /* Orange */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-left: 5px; /* Add some space between buttons */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-button:hover {
+  background-color: #138496;
 }
 
 .create-conversation {
@@ -172,4 +189,19 @@ h2 {
 
 .favorite-icon i.far {
   color: #ccc; /* Grey color for not favorite */
+}
+
+.mute-button {
+  background-color: #FFA500; /* Orange */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-left: 5px; /* Add some space between buttons */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.mute-button:hover {
+  background-color: #FF8C00; /* Dark Orange on hover */
 }

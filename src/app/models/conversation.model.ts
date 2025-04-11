@@ -7,5 +7,5 @@ export interface Conversation {
   lastMessageTimestamp?: Date;
   userFavorites: User[];
   unreadMessagesCount: number;
-  notificationEnabled: boolean;
+  mutedBy: User[];
 }

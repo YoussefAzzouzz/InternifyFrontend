@@ -6,7 +6,9 @@ import { FrontOfficeComponent } from './front-office.component';
 import { HomeComponent } from './home/home.component';
 import { ConversationComponent } from './conversation/conversation.component';
 import { MessageComponent } from './message/message.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ConversationSearchComponent } from './conversation-search/conversation-search.component';
 
 
 @NgModule({
@@ -14,12 +16,15 @@ import {FormsModule} from "@angular/forms";
     FrontOfficeComponent,
     HomeComponent,
     ConversationComponent,
-    MessageComponent
+    MessageComponent,
+    ConversationSearchComponent
   ],
   imports: [
     CommonModule,
     FrontOfficeRoutingModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule,
+    ReactiveFormsModule
   ]
 })
 export class FrontOfficeModule { }

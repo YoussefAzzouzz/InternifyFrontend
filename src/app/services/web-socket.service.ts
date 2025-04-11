@@ -10,6 +10,8 @@ export class WebSocketService {
   private stompClient: any;
   private messagesSubject = new Subject<any>();
   private messageUpdatesSubject = new Subject<any>();
+  private notificationsSubject = new Subject<any>();
+  private userId!: number;
 
   constructor() {
     this.connect();
@@ -25,6 +27,11 @@ export class WebSocketService {
       this.stompClient.subscribe('/topic/messages', (message: any) => {
         this.messageUpdatesSubject.next(JSON.parse(message.body));
       });
+      if (this.userId) { // Check if userId is set
+        this.stompClient.subscribe('/topic/notifications/' + this.userId, (message: any) => { // Subscribe to notifications
+          this.notificationsSubject.next(JSON.parse(message.body));
+        });
+      }
     });
   }
 
@@ -38,5 +45,13 @@ export class WebSocketService {
 
   emitMessageUpdate(message: any) {
     this.messageUpdatesSubject.next(message);
+  }
+
+  setUserId(userId: number) { // Method to set userId
+    this.userId = userId;
+  }
+
+  getNotifications() {
+    return this.notificationsSubject.asObservable(); // New method to get notifications
   }
 }

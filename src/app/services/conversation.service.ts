@@ -35,4 +35,16 @@ export class ConversationService {
   toggleFavorite(conversationId: number, userId: number): Observable<Conversation> {
     return this.http.put<Conversation>(`${this.baseUrl}/${conversationId}/favorite/${userId}`, {});
   }
+
+  toggleMute(conversationId: number, userId: number): Observable<Conversation> {
+    return this.http.put<Conversation>(`${this.baseUrl}/${conversationId}/mute/${userId}`, {});
+  }
+
+  searchMessages(conversationId: number, content?: string, sentDate?: string): Observable<Message[]> {
+    let params: any = {};
+    if (content) params.content = content;
+    if (sentDate) params.sentDate = sentDate;
+
+    return this.http.get<Message[]>(`${this.baseUrl}/${conversationId}/search`, { params });
+  }
 }

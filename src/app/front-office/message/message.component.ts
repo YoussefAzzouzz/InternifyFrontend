@@ -216,7 +216,7 @@ export class MessageComponent implements OnInit {
 
       const newMessage: Message = {
         id: 0,
-        content: this.selectedFile.type === validPdfType ? 'PDF file attached' : 'Image file attached',
+        content: this.selectedFile.type === validPdfType ? 'PDF' : 'Image',
         messageType: this.selectedFile.type === validPdfType ? 'PDF' : 'IMAGE',
         sender: this.connectedUser ,
         receiver: this.conversation.users[0].id === this.userId ? this.conversation.users[1] : this.conversation.users[0],
@@ -249,7 +249,7 @@ export class MessageComponent implements OnInit {
 
     const newMessage: Message = {
       id: 0,
-      content: 'Audio message attached',
+      content: 'Audio',
       messageType: 'AUDIO',
       sender: this.connectedUser ,
       receiver: this.conversation.users[0].id === this.userId ? this.conversation.users[1] : this.conversation.users[0],
