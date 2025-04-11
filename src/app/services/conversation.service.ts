@@ -47,4 +47,12 @@ export class ConversationService {
 
     return this.http.get<Message[]>(`${this.baseUrl}/${conversationId}/search`, { params });
   }
+
+  getAllConversations(): Observable<Conversation[]> {
+    return this.http.get<Conversation[]>(this.baseUrl);
+  }
+
+  getConversationStatistics(conversationId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/${conversationId}/stats`);
+  }
 }

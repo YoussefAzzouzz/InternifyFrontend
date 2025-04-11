@@ -6,6 +6,8 @@ import { DemandComponent } from './demand/demand.component';
 import { DemandFormComponent } from './demand-form/demand-form.component';
 import { DemandDetailsComponent } from './demand-details/demand-details.component';
 import {MessageStatsComponent} from "./message-stats/message-stats.component";
+import {AllConversationsComponent} from "./all-conversations/all-conversations.component";
+import {ConversationStatsComponent} from "./conversation-stats/conversation-stats.component";
 
 const routes: Routes = [
   {
@@ -15,7 +17,9 @@ const routes: Routes = [
       { path: 'add', component: DemandFormComponent },
       { path: 'edit/:id', component: DemandFormComponent },
       { path: 'details/:id', component: DemandDetailsComponent },
-      { path: 'chat', component: MessageStatsComponent }
+      { path: 'chat', component: MessageStatsComponent },
+      { path: 'conversations', component: AllConversationsComponent },
+      { path: 'conversations/:id', component: ConversationStatsComponent }
     ]
   }
 ];

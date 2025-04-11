@@ -10,6 +10,8 @@ import { DemandFormComponent } from './demand-form/demand-form.component';
 import { DemandDetailsComponent } from './demand-details/demand-details.component';
 import { BackOfficeLayoutComponent } from './back-office-layout/back-office-layout.component';
 import { MessageStatsComponent } from './message-stats/message-stats.component';
+import { AllConversationsComponent } from './all-conversations/all-conversations.component';
+import { ConversationStatsComponent } from './conversation-stats/conversation-stats.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { MessageStatsComponent } from './message-stats/message-stats.component';
     DemandFormComponent,
     DemandDetailsComponent,
     BackOfficeLayoutComponent,
-    MessageStatsComponent
+    MessageStatsComponent,
+    AllConversationsComponent,
+    ConversationStatsComponent
   ],
     imports: [
         CommonModule,
