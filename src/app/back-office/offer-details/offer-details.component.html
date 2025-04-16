@@ -1,0 +1,90 @@
+<div class="container mt-5">
+    <h2 class="text-center text-primary">Offer Details</h2>
+  
+    <!-- Offer details display -->
+    <div *ngIf="offer" class="demand-item shadow-lg rounded-lg overflow-hidden mb-5 bg-white">
+      <div class="demand-info p-4">
+        <h3 class="demand-title text-dark">{{ offer.title }}</h3>
+        <img [src]="offer.image" alt="{{ offer.title }}" class="offer-image">
+        <p class="demand-description"><strong>Description:</strong> {{ offer.description }}</p>
+        <p class="demand-field"><strong>Category:</strong> {{ offer.category }}</p>
+        <p class="demand-date"><strong>Publication Date:</strong> {{ offer.datePub ? (offer.datePub | date: 'short') : 'N/A' }}</p>
+        <p class="demand-status"><strong>Expiration Date:</strong> {{ offer.dateExp ? (offer.dateExp | date: 'short') : 'N/A' }}</p>
+      </div>
+  
+      <!-- Offer actions (Edit/Delete) -->
+      <div class="demand-actions d-flex justify-content-between align-items-center p-3 bg-light">
+        <button class="btn btn-lg btn-warning text-dark px-4" [routerLink]="['/back-office/edit-offer', offer.id]" >Edit</button>
+        <button class="btn btn-lg btn-danger px-4" (click)="deleteOffer(offer.id)">Delete</button>
+      </div>
+    </div>
+  
+    <!-- Comments Section -->
+    <div *ngIf="comments.length > 0" class="comments-section">
+      <h3 class="text-secondary mb-3">Comments:</h3>
+      <ul class="list-unstyled">
+        <li *ngFor="let comment of comments" class="comment-item mb-4 p-4 bg-light rounded-lg shadow-sm">
+          <p class="mb-2">{{ comment.content }}</p>
+          <small class="text-muted">Created on: {{ comment.creationDate | date: 'short' }}</small>
+        </li>
+      </ul>
+    </div>
+  
+    <!-- Add Comment Section -->
+    <div class="add-comment-section mt-4">
+      <h3 class="text-secondary mb-3">Add a Comment:</h3>
+      <div class="d-flex">
+        <input type="text" [(ngModel)]="newComment" name="comment" class="form-control form-control-sm"
+               placeholder="Write your comment..."
+               required minlength="5" maxlength="500" #commentInput="ngModel" />
+        <button class="btn btn-primary btn-sm ms-2" (click)="addComment(offer.id)" [disabled]="!commentInput.valid">
+          <i class="fas fa-paper-plane"></i> Post
+        </button>
+        <div *ngIf="commentInput.invalid && commentInput.touched" class="text-danger mt-2">
+          <small *ngIf="commentInput.errors?.['required']">Comment is required.</small>
+          <small *ngIf="commentInput.errors?.['minlength']">Comment must be at least 5 characters long.</small>
+          <small *ngIf="commentInput.errors?.['maxlength']">Comment cannot exceed 500 characters.</small>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Applications Section -->
+    <div *ngIf="applications.length > 0" class="applications-section mt-4">
+      <h3 class="text-secondary mb-3">Applications:</h3>
+      <ul class="list-unstyled">
+        <li *ngFor="let application of applications" class="application-item mb-4 p-4 bg-light rounded-lg shadow-sm">
+          <p><strong>Status:</strong> {{ application.status }}</p>
+          <p><strong>CV:</strong> {{ application.cv }}</p>
+          <p><strong>Motivation Letter:</strong> {{ application.motivationLetter }}</p>
+          <small class="text-muted">Posted on: {{ application.postDate | date: 'short' }}</small>
+        </li>
+      </ul>
+    </div>
+  
+    <div class="add-application-section mt-4">
+      <h3 class="text-secondary mb-3">Add an Application:</h3>
+      <div class="d-flex flex-column">
+        <input type="text" [(ngModel)]="newApplication.cv" name="cv" class="form-control mb-3"
+               placeholder="Enter CV details" required minlength="5" #cvInput="ngModel" />
+        <input type="text" [(ngModel)]="newApplication.motivationLetter" name="motivationLetter" class="form-control mb-3"
+               placeholder="Enter Motivation Letter details" required minlength="10" #motivationInput="ngModel" />
+        <button class="btn btn-primary" (click)="addApplication()" [disabled]="!cvInput.valid || !motivationInput.valid">
+          Apply
+        </button>
+        <div *ngIf="cvInput.invalid && cvInput.touched" class="text-danger mt-2">
+          <small *ngIf="cvInput.errors?.['required']">CV is required.</small>
+          <small *ngIf="cvInput.errors?.['minlength']">CV must be at least 5 characters long.</small>
+        </div>
+        <div *ngIf="motivationInput.invalid && motivationInput.touched" class="text-danger mt-2">
+          <small *ngIf="motivationInput.errors?.['required']">Motivation letter is required.</small>
+          <small *ngIf="motivationInput.errors?.['minlength']">Motivation letter must be at least 10 characters long.</small>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Back to Offer List Button -->
+    <div class="text-center mt-4">
+      <button class="btn btn-lg btn-outline-secondary px-5 py-3" [routerLink]="['/back-office/offer']">Back to Offer List</button>
+    </div>
+  </div>
+  
