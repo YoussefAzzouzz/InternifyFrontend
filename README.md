@@ -1,27 +1,58 @@
-# Internify
+#Esprit_school_of_engineering
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+💬 Intelligent Messaging Module – Frontend (Angular)
+This is the Angular-based frontend for the messaging system in our Intelligent Internship Platform. It provides a sleek, responsive, and real-time user experience for sending and managing messages, handling file attachments, and viewing analytics.
 
-## Development server
+🎯 Core Features
+📨 Real-Time Chat Interface
+- Send and receive messages instantly using WebSocket (STOMP over SockJS)
+- Live updates for message status: read/unread indicators per message
+- Real-time typing indicators and automatic scroll-to-latest behavior
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+📎 Attachments & Voice Messages
+- Support for sending/receiving images, PDFs, and audio files
+- In-browser recording of voice messages, playable directly in chat
+- Drag-and-drop file upload and preview before sending
+- Input validation for file size and supported formats
 
-## Code scaffolding
+📌 Conversation Management
+- Start new conversations by entering the recipient’s email
+- Delete conversations instantly with live UI update
+- Mark conversations as favorites—visually highlighted and always prioritized in the list
+- Conversations sorted by favorite status and last activity date
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+🔍 Smart Search & Filtering
+- Search messages dynamically by keyword or date range
+- Pinned messages always displayed at the top of the conversation
+- Unread message counters per conversation with auto-decrement on read
 
-## Build
+🔔 Notifications & Controls
+- Real-time notification toasts for incoming messages
+- Enable/disable notifications per conversation
+- Live alert indicator when messages arrive while the app is open
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+📊 Statistics & Insights
+- View total messages sent/received per user
+- Display of average number of messages per conversation
+- Calculation of average time delay between exchanged messages
+- Real-time classification of messages by type: text, image, audio, PDF
 
-## Running unit tests
+🧠 Smart Profile Suggestions
+- While not handled entirely by the frontend, the messaging module integrates with a recommendation system that suggests relevant user profiles based on:
+  - Number of mutual friends
+  - Recent activity level in messaging
+- The frontend displays these suggestions.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+💡 UX Enhancements
+- Responsive UI
+- Message grouping by sender for clean visual hierarchy
+- Message status icons (sent, delivered, seen)
+- Input tooltips and error states for invalid actions
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+🛠️ Tech Stack
+- Framework: Angular
+- State Management: RxJS, Angular Services
+- Real-Time Messaging: STOMP over WebSocket (SockJS)
+- Styling: Angular Material / Bootstrap
+- Audio Recording: HTML5 MediaRecorder API
+- Notifications: Angular Toasts
