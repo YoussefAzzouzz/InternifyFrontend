@@ -1,27 +1,39 @@
-# Internify
+📱 Contract & Report Management System – Frontend (Angular)
+This is the Angular-based frontend application for the Contract & Report Management System. It interacts with the Spring Boot backend to manage contracts, reports, watermarked PDFs, digital signatures, notifications, and data visualizations.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+🚀 Features
+📄 Contract Management
+View contract list with dynamic search by Contract ID and status
 
-## Development server
+Upload PDF files and view/download watermarked contracts
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Change contract statuses (e.g., PENDING, APPROVED)
 
-## Code scaffolding
+View statistical summaries of contracts by status
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Trigger real-time SMS notifications on contract status changes via backend integration
 
-## Build
+📑 Report Management
+View report list with dynamic search by Report ID and validation status
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Upload and sign reports using a Signature Pad
 
-## Running unit tests
+Download reports with embedded digital signatures in the bottom-right corner
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+View report validation statistics (number of reports validated by the company)
 
-## Running end-to-end tests
+Receive email notifications when a report is signed via backend integration
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+View AI-generated report summaries based on text analysis
 
-## Further help
+🛠️ Tech Stack
+Frontend Framework: Angular 17+
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+UI Libraries: Angular Material
+
+HTTP Client: Angular HttpClient for API communication
+
+Charting: ng2-charts (for displaying contract/report status statistics)
+
+Signature Pad: angular2-signaturepad for digital report signing
+
