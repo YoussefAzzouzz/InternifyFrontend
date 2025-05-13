@@ -1,27 +1,50 @@
-# Internify
+# 🌐 Internify – Frontend System
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+## 🏫 Esprit School of Engineering
 
-## Development server
+## 📄 Overview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The **Internify** frontend is designed to provide a seamless user experience for students, companies, and administrators. It is built using modern web technologies such as **React** (or any other SPA framework like Angular or Vue), and communicates with the backend via RESTful APIs.
 
-## Code scaffolding
+This document outlines the architecture, technologies, and features of the **Internify** frontend system.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## 🚀 Core Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### 1. 🧑‍💼 User Interface
+- **User Authentication**: Login and registration forms for students, companies, and admins.
+- **User Dashboard**: Displays relevant user data, internship offers, applications, and reclamation status.
 
-## Running unit tests
+### 2. 📤 Internship Demand & Offer System
+- **Demand Posting**: Allows students to create and manage internship demands.
+- **Offer Viewing & Application**: Companies can post offers, and students can apply for positions.
+  
+### 3. 📬 Reclamation System
+- **Reclamation Submission**: Allows users to submit complaints or issues to the platform.
+- **Admin Responses**: Admins can respond to reclamations, and users are notified when responses are made.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 4. 📄 Reports & Contracts
+- **Report Submission**: Allows students to submit internship reports.
+- **Contract Management**: Displays contracts and allows students to sign and download them.
 
-## Running end-to-end tests
+### 5. 💬 Real-Time Communication
+- **Chat System**: Real-time messaging between users and companies to facilitate communication.
+- **Message Notifications**: Alerts users about new messages or responses.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+## 🛠️ Technologies Used
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+| Layer           | Tools / Frameworks                          |
+|-----------------|---------------------------------------------|
+| **Frontend**    | React (or Angular/Vue)                      |
+| **Routing**     | React Router (or Vue Router for Vue)        |
+| **UI Components**| Material-UI, Bootstrap, or TailwindCSS      |
+| **APIs**        |  Fetch API for communication with the backend |
+| **Real-Time**   | WebSockets or Socket.io (if real-time chat is used) |
+| **Authentication** | JWT for frontend authentication          |
+
+---
+
+
