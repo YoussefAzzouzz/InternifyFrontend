@@ -1,3 +1,4 @@
+#Esprit_school_of_engineering
 📱 Contract & Report Management System – Frontend (Angular)
 This is the Angular-based frontend application for the Contract & Report Management System. It interacts with the Spring Boot backend to manage contracts, reports, watermarked PDFs, digital signatures, notifications, and data visualizations.
 
